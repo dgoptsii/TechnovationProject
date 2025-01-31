@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
+    
+.stApp {
+    background-color: #EFE9D3;
+    font-family: 'Jura', sans-serif;
+}
+.stMarkdown { 
+    color: #EFE9D3;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Jura', sans-serif;
+}
+.title {
+    background-color: #ADC179;
+    font-size: 40px;
+    color: #5A6F44;
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+    font-family: 'Jura', sans-serif;
+}
+.rules {
+    background-color: #A98467;
+    color: #EFE9D3;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Jura', sans-serif;
+}
+
+
+
+/* Sidebar styling */
+.stSidebar {
+    background-color: #ADC179;
+    color: #252424;
+    font-family: 'Jura', sans-serif;
+}
+
+/* Styling for the radio button labels */
+.stRadio label {
+    color: #252424;  /* Custom color for labels */
+    font-family: 'Jura', sans-serif;
+    font-size: 18px;
+}
+
+/* Styling for the selected radio button highlight */
+.stRadio .css-1gk3v4b {
+    background-color: #512604;  /* Custom highlight color */
+    color: white;  /* Change text color to white to contrast the background */
+}
