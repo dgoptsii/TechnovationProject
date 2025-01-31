@@ -32,13 +32,13 @@
 /* Sidebar styling */
 .stSidebar {
     background-color: #ADC179;
-    color: #252424;
+    color: #512604;
     font-family: 'Jura', sans-serif;
 }
 
-/* Styling for the radio button labels */
+* Styling for the radio button labels */
 .stRadio label {
-    color: #252424;  /* Custom color for labels */
+    color: #512604;  /* Custom color for labels */
     font-family: 'Jura', sans-serif;
     font-size: 18px;
 }
