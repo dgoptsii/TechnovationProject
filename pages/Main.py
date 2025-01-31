@@ -4,7 +4,6 @@ import Game
 import GameRules
 import Partners
 
-
 #dictionary (key, value)
 PAGES = {
     "Game rules": GameRules,
