@@ -32,19 +32,9 @@
 /* Sidebar styling */
 .stSidebar {
     background-color: #ADC179;
-    color: #512604;
+    color: #232221;
     font-family: 'Jura', sans-serif;
 }
 
-* Styling for the radio button labels */
-.stRadio label {
-    color: #512604;  /* Custom color for labels */
-    font-family: 'Jura', sans-serif;
-    font-size: 18px;
-}
 
-/* Styling for the selected radio button highlight */
-.stRadio .css-1gk3v4b {
-    background-color: #512604;  /* Custom highlight color */
-    color: white;  /* Change text color to white to contrast the background */
-}
+
