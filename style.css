@@ -6,14 +6,14 @@
 }
 .stMarkdown { 
     color: #EFE9D3;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     font-family: 'Jura', sans-serif;
 }
 .title {
     background-color: #ADC179;
     font-size: 40px;
-    color: #5A6F44;
+    color: #3d4e2a;
     text-align: center;
     padding: 10px;
     border-radius: 15px;
@@ -21,8 +21,8 @@
 }
 .rules {
     background-color: #A98467;
-    color: #EFE9D3;
-    padding: 20px;
+    color: #f1eddf;
+    padding: 10px;
     border-radius: 10px;
     font-family: 'Jura', sans-serif;
 }
