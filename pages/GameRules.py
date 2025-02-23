@@ -16,4 +16,4 @@ def app():
     # Load the CSS file to apply styles globally
     utils.load_css("style.css")
     st.markdown('<div class="title">Правила гри</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="rules">{rules}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="text">{rules}</div>', unsafe_allow_html=True)
