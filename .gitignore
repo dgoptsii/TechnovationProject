@@ -1,0 +1,6 @@
+*.pyc
+*.pyc
+/__pycache__/
+/pycache/
+/pages/__pycache__/
+/pages/pycache/
