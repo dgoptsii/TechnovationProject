@@ -7,6 +7,9 @@ def app():
     st.title("Our Partners") 
     st.header("Українське товариство глухих")
 
+    st.markdown('<div class="title">Правила гри</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="partners">{partners}</div>', unsafe_allow_html=True) 
+
     # Load the CSS file to apply styles globally
     
 partners = (
@@ -16,8 +19,7 @@ partners = (
         "Команда ПОГ «Центр соціального бізнесу» надає послуги перекладу жестової мови. Послуги надаються Замовнику в будь-якому зручному форматі. Багатьох слів, особливо сучасних, не існує в жестовій мові. Тому деякі слова, для яких відсутнє жестове позначення, просто неможливо перекласти без використання української дактильної абетки. Вони також проводят захости по безбар’єрності.<br>"
     )
 
-st.markdown('<div class="title">Правила гри</div>', unsafe_allow_html=True)
-st.markdown(f'<div class="partners">{partners}</div>', unsafe_allow_html=True) 
+
 
 
    
