@@ -17,7 +17,7 @@ additionalinfo = ("Приєднуйтесь до нас і допоможіть 
 "Якщо у вас виникають питання чи якісь проблеми, ви можете звернутися до нас за електронною адресою:<br>" 
 "HiG_support@gmail.com"
 )
-   
+
 def app():
    # Load the CSS file to apply styles globally
     utils.load_css("style.css") 

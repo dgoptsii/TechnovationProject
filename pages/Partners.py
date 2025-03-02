@@ -1,6 +1,7 @@
 import streamlit as st
 import utils
 # Function to load the CSS
+
 partners = (
         "Для нас важливі партнери, оскільки вони допомагають розширювати наш проект та підвищують довіру до нашої аудіторії, що дозволяє нам реалізувати соціпальну ініціативу для розвитку жествої мови, та досягнути ефективніше нашу ціль.<br>"
         "Всеукраїнська громадська організація людей з вадами слуху. Була заснована у 1933 році. Член Всесвітньої федерації глухих. На сьогодні обласні і територіальні організації УТОГ об'єднують понад 50 тисяч громадян України з порушеннями слуху та мови.<br>"
@@ -10,13 +11,12 @@ partners = (
 
 
 def app():
-    
+    # Load the CSS file to apply styles globally
     
     utils.load_css("style.css")
     st.markdown('<div class="title">Партнери</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="text">{partners}</div>', unsafe_allow_html=True) 
 
-    # Load the CSS file to apply styles globally
  
     st.header("Партнери")
     image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Flag_utog.svg/150px-Flag_utog.svg.png"

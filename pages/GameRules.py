@@ -1,8 +1,7 @@
 import streamlit as st
-import utils 
+import utils
 
 # Function to load the CSS
-
 
 rules = (
     "Гра складається зі статичних жестів української мови.<br>"

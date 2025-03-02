@@ -5,8 +5,8 @@ import AboutUs
 import Partners
 import LearningMaterials
 import HomePage
-import utils 
-\
+import utils
+
 
 #dictionary (key, value)
 PAGES = {
@@ -15,7 +15,7 @@ PAGES = {
     "Гра": Game, 
     "Начальні матеріали": LearningMaterials, 
     "Партнери": Partners,
-    "Головна" : HomePage
+    "Головна" : HomePage 
 }
 
 st.sidebar.title('My Navigation')
