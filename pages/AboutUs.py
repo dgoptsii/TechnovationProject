@@ -4,7 +4,7 @@ def app():
     st.title("About us")
    
 import streamlit as st
-import pages.utils as utils
+import utils
 
 # Function to load the CSS
 

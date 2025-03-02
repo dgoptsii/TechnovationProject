@@ -4,7 +4,7 @@ import Game
 import AboutUs 
 import Partners
 import LearningMaterials
-import pages.utils as utils
+import utils
 
 
 #dictionary (key, value)
