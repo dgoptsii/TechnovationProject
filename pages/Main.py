@@ -4,6 +4,7 @@ import Game
 import AboutUs 
 import Partners
 import LearningMaterials
+import HomePage
 import utils
 
 
@@ -13,7 +14,8 @@ PAGES = {
     "Про нас": AboutUs,
     "Гра": Game, 
     "Начальні матеріали": LearningMaterials, 
-    "Партнери": Partners 
+    "Партнери": Partners, 
+    "Головна": HomePage
 }
 
 st.sidebar.title('My Navigation')
