@@ -2,6 +2,7 @@ import streamlit as st
 import utils
 # Function to load the CSS
 
+
 Timecode =("Таймкод: 1.24- алфавіт. У цьому відео детально розповідають що таке дактиль, базові жести і дають пораду як його вивчити")
 Video = ("Відео, яке допоможе вивчити привітання")
 
@@ -29,9 +30,3 @@ def app():
   st.header(" Ресурси для вивчення жестової мови")
   st.markdown("[Spread The Sign – онлайн-словник](https://spreadthesign.com/uk.ua/search/?cls=1)")
   st.markdown("[Курс жестової мови на Megogo](https://megogo.net/ua/view/3820211-kurs-zhestovo-movi-ukra-nskoyu-movoyu.html)")
-
-
-
-
-
-

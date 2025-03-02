@@ -5,8 +5,8 @@ import AboutUs
 import Partners
 import LearningMaterials
 import HomePage
-import utils
-
+import utils 
+\
 
 #dictionary (key, value)
 PAGES = {
