@@ -1,5 +1,5 @@
 import streamlit as st
-import utils
+import pages.utils as utils
 
 # Function to load the CSS
 

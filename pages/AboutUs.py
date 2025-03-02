@@ -1,5 +1,34 @@
 import streamlit as st
 
 def app():
-    st.title("Game Rules")
-    st.write("Here are the rules of the game.")
+    st.title("About us")
+   
+import streamlit as st
+import pages.utils as utils
+
+# Function to load the CSS
+
+rule = """Ми - група підлітків, які є учасниками міжнародного проекту "Technovation Girls". 
+Ми довго думали над темою нашого проєкту, проте врешті-решт зупинилися на інклюзії. 
+Нашою мрією стало допомагати дітям з вадами слуху вливатися в сучасне суспільство і не відчувати себе зайвими, 
+допомагати їм рухатися далі.
+
+Із часом зародилася ідея створення доступної і сучасної гри, яка є інструментом для навчання жестової мови, 
+яка об'єднувала б людей з різних культур та середовищ.
+"""
+
+# Додатковий текст
+additional_info = """Приєднуйтесь до нас і допоможіть будувати інклюзивне майбутнє! 
+Станьте частиною нашої спільноти – разом ми можемо змінити світ!!
+
+Якщо у вас виникають питання чи якісь проблеми, ви можете звернутися до нас за електронною адресою: 
+HiG_support@gmail.com
+"""
+   
+def app():
+    # Load the CSS file to apply styles globally
+    utils.load_css("style.css")
+    st.markdown('<div class="title">Про Нас</div>', unsafe_allow_html=True)
+
+
+
