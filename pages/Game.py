@@ -69,6 +69,3 @@ def game():
             if st.session_state.incorrect_guesses >= 10:
                 st.error("На жаль, ви програли!")
                 st.session_state.game_started = False
-
-if name == "main":
-    game()
