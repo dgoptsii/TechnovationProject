@@ -29,4 +29,8 @@ def app():
 
   st.header(" Ресурси для вивчення жестової мови")
   st.markdown("[Spread The Sign – онлайн-словник](https://spreadthesign.com/uk.ua/search/?cls=1)")
+<<<<<<< HEAD
   st.markdown("[Курс жестової мови на Megogo](https://megogo.net/ua/view/3820211-kurs-zhestovo-movi-ukra-nskoyu-movoyu.html)")
+=======
+  st.markdown("[Курс жестової мови на Megogo](https://megogo.net/ua/view/3820211-kurs-zhestovo-movi-ukra-nskoyu-movoyu.html)")
+>>>>>>> 5ad2718be097dd2074ced28d0459240e18e2df00
