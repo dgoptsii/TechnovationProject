@@ -18,8 +18,8 @@ PAGES = {
     "Головна" : HomePage 
 }
 
-st.sidebar.title('My Navigation')
-selection = st.sidebar.radio("Go to", list(PAGES.keys()))
+st.sidebar.title('Меню')
+selection = st.sidebar.radio("Перейти на", list(PAGES.keys()))
 
 page = PAGES[selection]
 utils.load_css("style.css")
