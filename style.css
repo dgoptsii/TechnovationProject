@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
     
 .stApp {
-    background-color: #EFE9D3;
+    background-color: #FFF7F4;
     font-family: 'Jura', sans-serif;
 }
 .stMarkdown { 
@@ -11,30 +11,26 @@
     font-family: 'Jura', sans-serif;
 }
 .title {
-    background-color: #ADC179;
     font-size: 40px;
-    color: #3d4e2a;
+    color: #276B5A;
     text-align: center;
+    font-family: 'Inter', sans-serif;
     padding: 10px;
     border-radius: 15px;
-    font-family: 'Jura', sans-serif;
 }
 .text {
-    background-color: #A98467;
-    color: #f1eddf;
+    background-color: #588F7C;
+    color: #FFFFFF;
     padding: 10px;
-    border-radius: 10px;
-    font-family: 'Jura', sans-serif;
+    border: 8px solid #276B5A;
+    border-radius: 12px;
+    font-family: 'Lato', sans-serif;
 }
-
 
 
 /* Sidebar styling */
 .stSidebar {
-    background-color: #ADC179;
-    color: #232221;
-    font-family: 'Jura', sans-serif;
+    background-color: #588F7C;
+    color: #18463b;
+    font-family: 'Inter', sans-serif;
 }
-
-
-
