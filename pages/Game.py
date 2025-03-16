@@ -2,19 +2,19 @@ import streamlit as st
 import random
 
 def change_level(level):
-    st.session_state["level"] = level  # Меняем уровень
+    st.session_state["level"] = level  # Змінюємо рівень
 
 def reset_game():
-    """Функция для сброса игры (новое слово, 5 попыток, пустой список букв)."""
+    """Функція для скидання гри (нове слово, 5 спроб, порожній список букв)."""
     if st.session_state["level"] == "easy":
         st.session_state["random_word"] = random.choice(["ДОБРО", "ЛЮБОВ", "ДРУЗІ"])
         st.session_state["count"] = 5
     elif st.session_state["level"] == "medium":
-        st.session_state["random_word"] = random.choice(["СМІЛИВИЙ", "ЧАРІВНИЙ", "ВАЖЛИВИЙ"])  # Слова для среднего уровня
-        st.session_state["count"] = 8  # 8 попыток для среднего уровня
+        st.session_state["random_word"] = random.choice(["СМІЛИВИЙ", "ЧАРІВНИЙ", "ВАЖЛИВИЙ"])  # Слова для середнього рівня
+        st.session_state["count"] = 8  # 8 спроб для середнього рівня
     elif st.session_state["level"] == "hard":
         st.session_state["random_word"] = random.choice(["ПРОГРАМУВАННЯ", "МАТЕМАТИКА", "ЕНЕРГІЯ"])
-        st.session_state["count"] = 10  # 10 попыток для сложного уровня
+        st.session_state["count"] = 10  # 10 спроб для складного рівня
 
     st.session_state["guessed_letters"] = []
     st.session_state["current_letter"] = ""
@@ -84,7 +84,7 @@ def app():
 
         st.button("Назад", on_click=change_level, args=("menu",))
 
-    # Уровень "Середній"
+    # Рівень "Середній"
     elif st.session_state["level"] == "medium":
         st.subheader("Середній рівень")
         st.write("Ви граєте на середньому рівні!")
@@ -101,8 +101,11 @@ def app():
             "https://i.postimg.cc/vH4ftLQp/2025-03-16-154229.png",
             "https://i.postimg.cc/1zQFSkpQ/2025-03-16-154249.png",
             "https://i.postimg.cc/tJYZDpHh/2025-03-16-154304.png",
-            "https://i.postimg.cc/28sn5b4h/2025-03-16-150811.png",
-            "https://i.postimg.cc/jjKNzp3j/2025-03-16-150835.png"
+            "https://i.postimg.cc/RVGChj5m/2025-03-16-155003.png",
+            "https://i.postimg.cc/6Q4BHq76/2025-03-16-155018.png",
+            "https://i.postimg.cc/QC4PGgP2/2025-03-16-155036.png",
+            "https://i.postimg.cc/QNmZJ16k/2025-03-16-155049.png",
+            "https://i.postimg.cc/wB8rpjfj/2025-03-16-155109.png"
         ]
 
         img_index = max(0, min(8, 8 - count))
@@ -137,12 +140,10 @@ def app():
 
         st.button("Назад", on_click=change_level, args=("menu",))
 
-    # Уровень "Складний"
+    # Рівень "Складний"
     elif st.session_state["level"] == "hard":
         st.subheader("Складний рівень")
         st.write("Ви граєте на складному рівні!")
 
         # Кнопка "Назад"
         st.button("Назад", on_click=change_level, args=("menu",))
-   
-
