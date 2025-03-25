@@ -12,6 +12,7 @@ def app():
     # Load the CSS file to apply styles globally
     
      st.markdown('<div class="titi">Партнери</div>', unsafe_allow_html=True)
+     st.markdown('<div class="title">Партнери</div>', unsafe_allow_html=True)
 
     
      col1, col2 = st.columns([1, 3])
@@ -27,6 +28,7 @@ def app():
 
      col1, col2 = st.columns([1, 3])
  
+
 
      with col1:
          image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2LzUJRpQ_EDlyT0Wgkl9ccfboOfBD3f6n3A&s"
@@ -48,9 +50,22 @@ def app():
           st.markdown('<div class="title">ПОГ</div>', unsafe_allow_html=True)
           st.markdown(f'<div class="text">{ПОГ}</div>', unsafe_allow_html=True)
 
+     with col1:
+         image_url = "https://afloo.od.ua/frontend/webcontent/images/websites/12/teams/2021_11_29_19_11_31_1638207332.png"
+         st.image(image_url, width=150)
 
-   
-   
-   
+     with col2:
+         st.markdown('<div class="title">ІНВАСПОРТ</div>', unsafe_allow_html=True)
+         st.markdown(f'<div class="text">{ІНВАСПОРТ}</div>', unsafe_allow_html=True) 
    
 
+     col1, col2 = st.columns([1, 3])
+
+
+     with col1:
+         image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa7-D_kDabaXFJgBVHmstmmsyAZfTLstru9A&s"
+         st.image(image_url, width=150)
+
+     with col2:
+          st.markdown('<div class="title">ПОГ</div>', unsafe_allow_html=True)
+          st.markdown(f'<div class="text">{ПОГ}</div>', unsafe_allow_html=True)

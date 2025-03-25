@@ -12,6 +12,9 @@ PAGES = {
     "Правила гри": GameRules,
     "Навчальні матеріали": LearningMaterials, 
     "Гра": Game, 
+    "Про проект": AboutUs,
+    "Гра": Game, 
+    "Начальні матеріали": LearningMaterials, 
     "Партнери": Partners
 }
 

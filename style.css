@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
     
 .stApp {
-    background-color: #FFF7F4;
+    background-color: #EFE9D3;
     font-family: 'Jura', sans-serif;
 }
 .stMarkdown { 
@@ -33,6 +33,7 @@
     text-align: center;
     font-weight: bold;
 }
+
 /* Sidebar styling */
 .stSidebar {
     background-color: #588F7C;
