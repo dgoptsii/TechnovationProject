@@ -26,8 +26,13 @@
     border-radius: 12px;
     font-family: 'Lato', sans-serif;
 }
-
-
+.titi {
+    color: #276B5A; 
+    font-family: 'Inter', sans-serif; 
+    font-size: 50px; 
+    text-align: center;
+    font-weight: bold;
+}
 /* Sidebar styling */
 .stSidebar {
     background-color: #588F7C;

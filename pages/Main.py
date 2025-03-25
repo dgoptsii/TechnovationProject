@@ -1,21 +1,18 @@
 import streamlit as st 
 import GameRules 
 import Game
-import AboutUs 
+import AboutUs
 import Partners
 import LearningMaterials
-import HomePage
 import utils
 
-
-#dictionary (key, value)
+# Dictionary (key, value) у потрібному порядку
 PAGES = {
+    "Про проект": AboutUs,
     "Правила гри": GameRules,
-    "Про нас": AboutUs,
+    "Навчальні матеріали": LearningMaterials, 
     "Гра": Game, 
-    "Начальні матеріали": LearningMaterials, 
-    "Партнери": Partners,
-    "Головна" : HomePage 
+    "Партнери": Partners
 }
 
 st.sidebar.title('Меню')

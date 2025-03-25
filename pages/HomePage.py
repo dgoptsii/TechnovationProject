@@ -26,7 +26,7 @@ def app():
      utils.load_css("style.css")
      # Load the CSS file to apply styles globally
      
-     st.markdown('<div class="title">Місія</div>', unsafe_allow_html=True)
+     st.markdown('<div class="titi">Місія</div>', unsafe_allow_html=True)
      st.markdown(f'<div class="text">{Misia}</div>', unsafe_allow_html=True)
 
      st.markdown('<div class="title">Візія</div>', unsafe_allow_html=True)
