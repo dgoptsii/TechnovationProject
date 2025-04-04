@@ -9,8 +9,8 @@ import utils
 
 #dictionary (key, value)
 PAGES = {
-    "Правила гри": GameRules,
     "Про проект": AboutUs,
+    "Правила гри": GameRules,
     "Гра": Game, 
     "Начальні матеріали": LearningMaterials, 
     "Громадські організації": PublicOrganizations
