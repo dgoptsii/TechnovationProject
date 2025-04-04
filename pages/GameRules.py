@@ -22,7 +22,7 @@ def app():
   st.markdown(
     f"""
     <div style="text-align:center;">
-        <img src="https://i.postimg.cc/jSM8KWcd/1.jpg" width="300" height="500">
+        <img src="https://i.postimg.cc/jSM8KWcd/1.jpg">
     </div>
     """,
     unsafe_allow_html=True
