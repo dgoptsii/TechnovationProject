@@ -3,6 +3,7 @@ import random
 
 def change_level(level):
     st.session_state["level"] = level  # Змінюємо рівень
+    reset_game()  # Очищуємо дані після зміни рівня
 
 def reset_game():
     """Функція для скидання гри (нове слово, 5 спроб, порожній список букв)."""
@@ -13,8 +14,8 @@ def reset_game():
         st.session_state["random_word"] = random.choice(["СМІЛИВИЙ", "ЧАРІВНИЙ", "ВАЖЛИВИЙ"])
         st.session_state["count"] = 8
     elif st.session_state["level"] == "hard":
-        st.session_state["random_word"] = random.choice(["ПРОГРАМУВАННЯ", "МАТЕМАТИКА", "ЕНЕРГІЯ"])
-        st.session_state["count"] = 10
+        st.session_state["random_word"] = random.choice(["ВИПРОБУВАННЯ", "МАТЕМАТИКА", "ЕНЕРГІЯ"])
+        st.session_state["count"] = 12  # Збільшено кількість спроб для складного рівня
 
     st.session_state["guessed_letters"] = []
     st.session_state["current_letter"] = ""
@@ -23,36 +24,7 @@ def app():
     if "level" not in st.session_state:
         st.session_state["level"] = "menu"
 
-    st.title("Гра")
-
-    st.markdown(
-        """<style>
-        .stButton>button {
-            border-radius: 8px;
-            padding: 10px 20px;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-        .stButton>button:hover {
-            background-color: #4F9A8C !important;  /* Світло-бірюзовий фон при наведенні */
-            color: white !important;
-        }
-        .back-button button, .retry-button button, .level-button button {
-            background-color: #FFFFFF !important;
-            border: 8px solid #4F9A8C !important; /* Світло-бірюзовий бордер */
-            color: #4F9A8C !important;  /* Текст світло-бірюзовий */
-        }
-        .back-button button:hover, .retry-button button:hover, .level-button button:hover {
-            background-color: #4F9A8C !important;
-            color: white !important;  /* Білий текст при наведенні */
-        }
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-        }
-        </style>""",
-        unsafe_allow_html=True
-    )
+    st.markdown('<div class="titi">Гра</div>', unsafe_allow_html=True)
 
     if st.session_state["level"] == "menu":
         st.subheader("Виберіть рівень:")
@@ -81,6 +53,22 @@ def app():
                 "https://i.postimg.cc/QNmZJ16k/2025-03-16-155049.png",
                 "https://i.postimg.cc/wB8rpjfj/2025-03-16-155109.png"
             ]),
+            "hard": ("Складний рівень", [
+                "https://i.postimg.cc/mDb2LmBm/2025-03-18-203502.png",
+                "https://i.postimg.cc/sfT9R8s0/2025-03-18-203545.png",
+                "https://i.postimg.cc/mr3Cppmj/2025-03-18-204922.png",
+                "https://i.postimg.cc/28qvNSHV/2025-03-18-205023.png",
+                "https://i.postimg.cc/hvQG6fSn/2025-03-18-205134.png",
+                "https://i.postimg.cc/Xv6DyhZk/2025-03-18-205259.png",
+                "https://i.postimg.cc/nLMYrG2G/2025-03-18-205352.png",
+                "https://i.postimg.cc/MKNzgW4Z/2025-03-18-205441.png",
+                "https://i.postimg.cc/43KLqgDG/2025-03-18-205540.png",
+                "https://i.postimg.cc/fRQYDhSZ/2025-03-18-205823.png",
+                "https://i.postimg.cc/xCZtPFxC/2025-03-18-210035.png",
+                "https://i.postimg.cc/B652jYrk/2025-03-18-210123.png",
+                "https://i.postimg.cc/k5mZ64D5/2025-03-18-210539.png",
+                "https://i.postimg.cc/44D1N0Yf/2025-03-18-210322.png"
+            ])
         }
 
         level_name, image_paths = levels.get(st.session_state["level"], ("", []))
@@ -88,13 +76,17 @@ def app():
 
         if "random_word" not in st.session_state:
             reset_game()
-
+  
         random_word = st.session_state["random_word"]
         count = st.session_state["count"]
         guessed_letters = st.session_state["guessed_letters"]
 
         img_index = max(0, min(len(image_paths) - 1, len(image_paths) - 1 - count))
-        st.image(image_paths[img_index])
+
+        # Центрування зображення з use_container_width
+        col1, col2, col3 = st.columns([1, 4, 1])  # Три колонки, центральна велика
+        with col2:
+            st.image(image_paths[img_index], use_container_width=True)
 
         display_word = "".join([letter if letter in guessed_letters else "_" for letter in random_word])
         display_word = display_word[0].upper() + display_word[1:].lower()
@@ -115,24 +107,18 @@ def app():
         if "_" not in display_word:
             st.success(f"🎉 Ви виграли! Слово: {random_word}")
             st.markdown('<div class="retry-button">', unsafe_allow_html=True)
-            st.button("Спробувати ще раз", on_click=reset_game)
-            st.markdown('</div>', unsafe_allow_html=True)
-
+           
         elif st.session_state["count"] == 0:
             st.error(f"❌ Ви програли. Загадане слово: {random_word}")
             st.markdown('<div class="retry-button">', unsafe_allow_html=True)
-            st.button("Спробувати ще раз", on_click=reset_game)
-            st.markdown('</div>', unsafe_allow_html=True)
+            
 
-        # Використовуємо 2 колонки для кнопок "Назад" і "Спробувати ще раз"
-        col1, col2 = st.columns([1, 1])  # 2 рівні колонки
-
-        with col2:  # Кнопка "Назад" з правого боку
-            st.markdown('<div class="back-button">', unsafe_allow_html=True)
-            st.button("Назад", on_click=change_level, args=("menu",))
-            st.markdown('</div>', unsafe_allow_html=True)
-
-        with col1:  # Кнопка "Спробувати ще раз" з лівого боку
-            st.markdown('<div class="retry-button">', unsafe_allow_html=True)
-            st.button("Спробувати ще раз", on_click=reset_game)
-            st.markdown('</div>', unsafe_allow_html=True)
+             # Центрування кнопок разом в одній колонці
+        col1, col2, col3 = st.columns([1, 2, 1])  # Три колонки, середня ширша для кнопок
+        with col2:
+            # Створюємо дві кнопки одну біля одної
+            col4, col5 = st.columns([1, 1])  # Дві рівні колонки для кнопок
+            with col4:
+                st.button("Спробувати ще раз", on_click=reset_game, key="retry_button_col1", use_container_width=True)
+            with col5:
+                st.button("Назад", on_click=change_level, args=("menu",), key="back_button", use_container_width=True)
