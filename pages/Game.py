@@ -19,32 +19,14 @@ def reset_game():
 
     st.session_state["guessed_letters"] = []
     st.session_state["current_letter"] = ""
+    st.session_state["wrong_letters"] = []
 
+wrong_letters_block = st.empty()
 def app(): 
     if "level" not in st.session_state:
         st.session_state["level"] = "menu"
 
     st.markdown('<div class="titi">Гра</div>', unsafe_allow_html=True)
-    st.markdown(
-        """<style>
-          .stButton>button {
-        background-color: #4F9A8C !important; /* Бірюзовий (перезовий) колір кнопки */
-        border: 2px solid #4F9A8C !important; /* Початковий контур */
-        color: white !important;
-        border-radius: 8px;
-        padding: 10px 20px;
-        font-size: 16px;
-        transition: all 0.3s ease;
-    }
-    
-    .stButton>button:hover {
-        background-color: #4F9A8C !important; /* Колір кнопки не змінюється */
-        border-color: #3A7D72 !important; /* Темніший бірюзовий контур при наведенні */
-        color: white !important; 
-
-        </style>""",
-        unsafe_allow_html=True
-    )
 
     if st.session_state["level"] == "menu":
         st.subheader("Виберіть рівень:")
@@ -112,6 +94,7 @@ def app():
         display_word = display_word[0].upper() + display_word[1:].lower()
         st.subheader(f"Слово: {display_word}")
 
+
         def process_letter():
             letter = st.session_state["current_letter"].upper()
             if letter and letter not in guessed_letters and letter.isalpha():
@@ -120,10 +103,13 @@ def app():
                     st.session_state["guessed_letters"] = guessed_letters
                 else:
                     st.session_state["count"] -= 1
-            st.session_state["current_letter"] = ""
+                if letter not in st.session_state["wrong_letters"]:
+                    st.session_state["wrong_letters"].append(letter)
+                    st.session_state["current_letter"] = ""
 
         st.text_input("Введіть букву:", key="current_letter", max_chars=1, on_change=process_letter)
-
+        wrong_letters_str = ", ".join(st.session_state["wrong_letters"])
+        wrong_letters_block.info(f"Неправильні літери: {wrong_letters_str}" if wrong_letters_str else "Неправильні літери: —")
 
         if "_" not in display_word:
             st.success(f"🎉 Ви виграли! Слово: {random_word}")
@@ -132,10 +118,14 @@ def app():
         elif st.session_state["count"] == 0:
             st.error(f"❌ Ви програли. Загадане слово: {random_word}")
             st.markdown('<div class="retry-button">', unsafe_allow_html=True)
-            
-        col1, col2 = st.columns([1, 1])
-        
-        with col1:
-            st.button("Спробувати ще раз", on_click=reset_game, key="retry_button_col1")
+
+
+             # Центрування кнопок разом в одній колонці
+        col1, col2, col3 = st.columns([1, 2, 1])  # Три колонки, середня ширша для кнопок
         with col2:
-            st.button("Назад", on_click=change_level, args=("menu",), key="back_button")
+            # Створюємо дві кнопки одну біля одної
+            col4, col5 = st.columns([1, 1])  # Дві рівні колонки для кнопок
+            with col4:
+                st.button("Спробувати ще раз", on_click=reset_game, key="retry_button_col1", use_container_width=True)
+            with col5:
+                st.button("Назад", on_click=change_level, args=("menu",), key="back_button", use_container_width=True)

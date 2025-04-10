@@ -34,4 +34,3 @@ def app():
   st.markdown(f'<div class="text">{Spread}</div>', unsafe_allow_html=True)
   st.markdown("[Курс жестової мови на Megogo](https://megogo.net/ua/view/3820211-kurs-zhestovo-movi-ukra-nskoyu-movoyu.html)")
   st.markdown(f'<div class="text">{Megogo}</div>', unsafe_allow_html=True)
-  st.markdown("[Курс жестової мови на Megogo](https://megogo.net/ua/view/3820211-kurs-zhestovo-movi-ukra-nskoyu-movoyu.html)")

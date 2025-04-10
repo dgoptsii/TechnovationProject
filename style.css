@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
     
 .stApp {
-    background-color: #EFE9D3;
+    background-color: #FFF7F4;
     font-family: 'Jura', sans-serif;
 }
 .stMarkdown { 
@@ -33,13 +33,55 @@
     text-align: center;
     font-weight: bold;
 }
-
-/* Sidebar styling */
-.stSidebar {
-    background-color: #588F7C;
-    color: #18463b;
+.titl {
+    font-size: 40px;
+    color: #fcf8e9;
+    text-align: center;
     font-family: 'Inter', sans-serif;
+    padding: 10px;
+    border-radius: 15px;
 }
 
 
+/* Sidebar styling */
+.stSidebar {
+    background-color: #3DB387;
+    color: #345753;
+    font-family: 'Inter', sans-serif;
+}
 
+.stButton>button {
+    background-color: #3DB387;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 12px;
+    border: 1px solid #276B5A;
+    transition: 0.3s ease;
+    white-space: nowrap; 
+}
+
+.stButton>button:hover {
+    background-color: #276B5A;
+    color: #EFE9D3;
+    border-color: #588F7C;
+}
+
+.retry-button button, .back-button button {
+    background-color: #3DB387;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 12px;
+    border: 1px solid #276B5A;
+    transition: 0.3s ease;
+    white-space: nowrap; 
+}
+
+.retry-button button:hover, .back-button button:hover {
+    background-color: #276B5A;
+    color: #EFE9D3;
+    border-color: #588F7C;
+}
