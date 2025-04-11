@@ -2,7 +2,7 @@ import streamlit as st
 import GameRules 
 import Game
 import AboutUs
-import Partners
+import PublicOrganizations
 import LearningMaterials
 import utils
 
@@ -12,12 +12,12 @@ PAGES = {
     "Правила гри": GameRules,
     "Навчальні матеріали": LearningMaterials, 
     "Гра": Game, 
-    "Партнери": Partners
+    "Громадські організації": PublicOrganizations
 }
 
 st.sidebar.title('Меню')
-selection = st.sidebar.radio("Перейти на", list(PAGES.keys()))
-
+selection = st.sidebar.radio("Перейти на", list(PAGES.keys())
+)
 page = PAGES[selection]
 utils.load_css("style.css")
 page.app()

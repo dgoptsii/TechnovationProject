@@ -1,4 +1,3 @@
-
 import streamlit as st
 import random
 
@@ -17,6 +16,15 @@ def reset_game():
     elif st.session_state["level"] == "hard":
         st.session_state["random_word"] = random.choice(["ВИПРОБУВАННЯ", "МАТЕМАТИКА", "ЕНЕРГІЯ"])
         st.session_state["count"] = 12  # Збільшено кількість спроб для складного рівня
+
+        st.session_state["random_word"] = random.choice(["ВІР", "ПАР", "ПІР"])
+        st.session_state["count"] = 3
+    elif st.session_state["level"] == "medium":
+        st.session_state["random_word"] = random.choice(["ПРАВО", "ВІРНА", "РІВНО"])
+        st.session_state["count"] = 5
+    elif st.session_state["level"] == "hard":
+        st.session_state["random_word"] = random.choice(["ПЛАНУВАННЯ", "ПРИВІТАННЯ", "УПРАВЛІННЯ"])
+        st.session_state["count"] = 10 # Збільшено кількість спроб для складного рівня
 
     st.session_state["guessed_letters"] = []
     st.session_state["current_letter"] = ""
@@ -142,3 +150,24 @@ def app():
         with col2:
             st.button("Назад", on_click=change_level, args=("menu",), key="back_button")
 
+
+        st.text_input("Введіть букву:", key="current_letter", max_chars=1, on_change=process_letter)
+
+        if "_" not in display_word:
+            st.success(f"🎉 Ви виграли! Слово: {random_word}")
+            st.markdown('<div class="retry-button">', unsafe_allow_html=True)
+           
+        elif st.session_state["count"] == 0:
+            st.error(f"❌ Ви програли. Загадане слово: {random_word}")
+            st.markdown('<div class="retry-button">', unsafe_allow_html=True)
+            
+
+             # Центрування кнопок разом в одній колонці
+        col1, col2, col3 = st.columns([1, 2, 1])  # Три колонки, середня ширша для кнопок
+        with col2:
+            # Створюємо дві кнопки одну біля одної
+            col4, col5 = st.columns([1, 1])  # Дві рівні колонки для кнопок
+            with col4:
+                st.button("Спробувати ще раз", on_click=reset_game, key="retry_button_col1", use_container_width=True)
+            with col5:
+                st.button("Назад", on_click=change_level, args=("menu",), key="back_button", use_container_width=True)
