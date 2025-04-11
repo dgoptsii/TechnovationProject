@@ -6,13 +6,12 @@ import Partners
 import LearningMaterials
 import utils
 
-
-#dictionary (key, value)
+# Dictionary (key, value) у потрібному порядку
 PAGES = {
-    "Правила гри": GameRules,
     "Про проект": AboutUs,
+    "Правила гри": GameRules,
+    "Навчальні матеріали": LearningMaterials, 
     "Гра": Game, 
-    "Начальні матеріали": LearningMaterials, 
     "Партнери": Partners
 }
 
