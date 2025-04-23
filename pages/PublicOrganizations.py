@@ -11,6 +11,9 @@ import utils
 def app():
     # Load the CSS file to apply styles globally
     
+
+     st.markdown('<div class="titi">Партнери</div>', unsafe_allow_html=True)
+
      st.markdown('<div class="title">Громадські організації</div>', unsafe_allow_html=True)
 
     
@@ -29,7 +32,7 @@ def app():
  
 
      with col1:
-         image_url = "https://afloo.od.ua/frontend/webcontent/images/websites/12/teams/2021_11_29_19_11_31_1638207332.png"
+         image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2LzUJRpQ_EDlyT0Wgkl9ccfboOfBD3f6n3A&s"
          st.image(image_url, width=150)
 
      with col2:
