@@ -1,10 +1,14 @@
 import streamlit as st 
 import GameRules 
 import Game
+import Help
 import AboutUs
 import PublicOrganizations
 import LearningMaterials
 import utils
+
+
+
 
 # Dictionary (key, value) у потрібному порядку
 PAGES = {
@@ -12,7 +16,8 @@ PAGES = {
     "Правила гри": GameRules,
     "Навчальні матеріали": LearningMaterials, 
     "Гра": Game, 
-    "Начальні матеріали": LearningMaterials, 
+    # сторінка "Допомогти проекту"
+    "Допомогти проекту": Help, 
     "Громадські організації": PublicOrganizations
 
 }

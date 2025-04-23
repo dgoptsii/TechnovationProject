@@ -11,10 +11,7 @@ import utils
 def app():
     # Load the CSS file to apply styles globally
     
-
-     st.markdown('<div class="titi">Партнери</div>', unsafe_allow_html=True)
-
-     st.markdown('<div class="title">Громадські організації</div>', unsafe_allow_html=True)
+     st.markdown('<div class="title_header">Громадські організації</div>', unsafe_allow_html=True)
 
     
      col1, col2 = st.columns([1, 3])
@@ -24,7 +21,7 @@ def app():
          st.image(image_url, width=150)
     
      with col2:
-         st.markdown('<div class="title">УТОГ</div>', unsafe_allow_html=True)
+         st.markdown('<div class="title_subheader">УТОГ</div>', unsafe_allow_html=True)
          st.markdown(f'<div class="text">{УТОГ}</div>', unsafe_allow_html=True) 
     
 
@@ -36,7 +33,7 @@ def app():
          st.image(image_url, width=150)
 
      with col2:
-         st.markdown('<div class="title">ІНВАСПОРТ</div>', unsafe_allow_html=True)
+         st.markdown('<div class="title_subheader">ІНВАСПОРТ</div>', unsafe_allow_html=True)
          st.markdown(f'<div class="text">{ІНВАСПОРТ}</div>', unsafe_allow_html=True) 
    
 
@@ -48,5 +45,5 @@ def app():
          st.image(image_url, width=150)
 
      with col2:
-          st.markdown('<div class="title">ПОГ</div>', unsafe_allow_html=True)
+          st.markdown('<div class="title_subheader">ПОГ</div>', unsafe_allow_html=True)
           st.markdown(f'<div class="text">{ПОГ}</div>', unsafe_allow_html=True)
