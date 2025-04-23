@@ -13,7 +13,6 @@ PAGES = {
     "Навчальні матеріали": LearningMaterials, 
     "Гра": Game, 
     "Громадські організації": PublicOrganizations
-
 }
 
 st.sidebar.title('Меню')

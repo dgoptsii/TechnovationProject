@@ -33,14 +33,7 @@
     text-align: center;
     font-weight: bold;
 }
-.titl {
-    font-size: 40px;
-    color: #fcf8e9;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    padding: 10px;
-    border-radius: 15px;
-}
+
 
 .btn {
     background: #4F9A8C;
@@ -84,6 +77,9 @@
     color: #EFE9D3;
     border-color: #588F7C;
 }
+
+
+
 
 .retry-button button, .back-button button {
     background-color: #3DB387;
