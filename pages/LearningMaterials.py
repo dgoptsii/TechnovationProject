@@ -1,9 +1,10 @@
 import streamlit as st
 import utils
-# Function to load the CSS
 
-
-Timecode =("Таймкод: 1.24- алфавіт. У цьому відео детально розповідають що таке дактиль, базові жести і дають пораду як його вивчити")
+# Тексти описів
+Spread = ("Перекладач жестової мови Spread the Sign – це міжнародний онлайн-словник жестової мови, який допомагає вивчати та розуміти жести різних країн. Сервіс містить відео з жестами та їх значеннями.")
+Megogo = ("Курс жестової мови для MEGOGO – це цикл повноцінних уроків, що охоплює основи жестової мови та дактилю (жестовий алфавіт). Курс допоможе вам опанувати базові жести для повсякденного спілкування та краще зрозуміти культуру глухих людей.")
+Timecode = ("Таймкод: 1.24 - алфавіт. У цьому відео детально розповідають що таке дактиль, базові жести і дають пораду як його вивчити")
 Video = ("Відео, яке допоможе вивчити привітання")
 
 def app():
@@ -15,8 +16,8 @@ def app():
     st.video("https://youtu.be/J6Kb4hMAbHE?si=fjXLA9rZvZ9WBX_Z")
     st.markdown(f'<div class="text">{Timecode}</div>', unsafe_allow_html=True) 
     with col2:
-      st.video("https://youtu.be/YKD8q4OQhPo?si=4YgiNlWU8sDv-dKP") 
-      st.markdown(f'<div class="text">{Video}</div>', unsafe_allow_html=True) 
+        st.video("https://youtu.be/YKD8q4OQhPo?si=4YgiNlWU8sDv-dKP")
+        st.markdown(f'<div class="text">{Video}</div>', unsafe_allow_html=True)
 
   st.markdown('<div class="title_subheader">Навчальні матеріали</div>', unsafe_allow_html=True)
   
