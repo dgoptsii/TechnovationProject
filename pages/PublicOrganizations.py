@@ -12,9 +12,7 @@ def app():
     # Load the CSS file to apply styles globally
     
 
-     st.markdown('<div class="titi">Партнери</div>', unsafe_allow_html=True)
-
-     st.markdown('<div class="title">Громадські організації</div>', unsafe_allow_html=True)
+     st.markdown('<div class="titi">Громадські організації</div>', unsafe_allow_html=True)
 
     
      col1, col2 = st.columns([1, 3])

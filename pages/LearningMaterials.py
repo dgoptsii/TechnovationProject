@@ -10,6 +10,7 @@ Video = ("Відео, яке допоможе вивчити привітанн�
 
 def app():
   st.markdown('<div class="titi">Навчальні матеріали</div>', unsafe_allow_html=True)
+  
 
  # Videos 
   st.markdown(f'<div class="titi">Відео жестів</div>', unsafe_allow_html=True)
