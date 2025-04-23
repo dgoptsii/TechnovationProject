@@ -12,7 +12,6 @@ PAGES = {
     "Правила гри": GameRules,
     "Навчальні матеріали": LearningMaterials, 
     "Гра": Game, 
-    "Начальні матеріали": LearningMaterials, 
     "Громадські організації": PublicOrganizations
 
 }
