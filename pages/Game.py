@@ -11,15 +11,6 @@ def reset_game():
         st.session_state["random_word"] = random.choice(["ДОБРО", "ЛЮБОВ", "ДРУЗІ"])
         st.session_state["count"] = 5
     elif st.session_state["level"] == "medium":
-        st.session_state["random_word"] = random.choice(["СМІЛИВИЙ", "ЧАРІВНИЙ", "ВАЖЛИВИЙ"])
-        st.session_state["count"] = 8
-    elif st.session_state["level"] == "hard":
-        st.session_state["random_word"] = random.choice(["ВИПРОБУВАННЯ", "МАТЕМАТИКА", "ЕНЕРГІЯ"])
-        st.session_state["count"] = 12  # Збільшено кількість спроб для складного рівня
-
-        st.session_state["random_word"] = random.choice(["ВІР", "ПАР", "ПІР"])
-        st.session_state["count"] = 3
-    elif st.session_state["level"] == "medium":
         st.session_state["random_word"] = random.choice(["ПРАВО", "ВІРНА", "РІВНО"])
         st.session_state["count"] = 5
     elif st.session_state["level"] == "hard":
@@ -33,35 +24,13 @@ def app():
     if "level" not in st.session_state:
         st.session_state["level"] = "menu"
 
-    st.title("Гра")
-
-    st.markdown(
-        """<style>
-          .stButton>button {
-        background-color: #4F9A8C !important; /* Бірюзовий (перезовий) колір кнопки */
-        border: 2px solid #4F9A8C !important; /* Початковий контур */
-        color: white !important;
-        border-radius: 8px;
-        padding: 10px 20px;
-        font-size: 16px;
-        transition: all 0.3s ease;
-    }
-    
-    .stButton>button:hover {
-        background-color: #4F9A8C !important; /* Колір кнопки не змінюється */
-        border-color: #3A7D72 !important; /* Темніший бірюзовий контур при наведенні */
-        color: white !important; 
-        
-        </style>""",
-        unsafe_allow_html=True
-    )
+    st.markdown('<div class="titi">Гра</div>', unsafe_allow_html=True)
 
     if st.session_state["level"] == "menu":
         st.subheader("Виберіть рівень:")
         st.button("Легкий", on_click=change_level, args=("easy",), key="easy_button", use_container_width=True)
         st.button("Середній", on_click=change_level, args=("medium",), key="medium_button", use_container_width=True)
         st.button("Складний", on_click=change_level, args=("hard",), key="hard_button", use_container_width=True)
-
 
     else:
         levels = {
@@ -105,9 +74,10 @@ def app():
         level_name, image_paths = levels.get(st.session_state["level"], ("", []))
         st.subheader(level_name)
 
+
         if "random_word" not in st.session_state:
             reset_game()
-
+  
         random_word = st.session_state["random_word"]
         count = st.session_state["count"]
         guessed_letters = st.session_state["guessed_letters"]
@@ -135,7 +105,6 @@ def app():
 
         st.text_input("Введіть букву:", key="current_letter", max_chars=1, on_change=process_letter)
 
-
         if "_" not in display_word:
             st.success(f"🎉 Ви виграли! Слово: {random_word}")
             st.markdown('<div class="retry-button">', unsafe_allow_html=True)
@@ -144,11 +113,16 @@ def app():
             st.error(f"❌ Ви програли. Загадане слово: {random_word}")
             st.markdown('<div class="retry-button">', unsafe_allow_html=True)
             
-        col1, col2 = st.columns([1, 1])
-        with col1:
-            st.button("Спробувати ще раз", on_click=reset_game, key="retry_button_col1")
+
+             # Центрування кнопок разом в одній колонці
+        col1, col2, col3 = st.columns([1, 2, 1])  # Три колонки, середня ширша для кнопок
         with col2:
-            st.button("Назад", on_click=change_level, args=("menu",), key="back_button")
+            # Створюємо дві кнопки одну біля одної
+            col4, col5 = st.columns([1, 1])  # Дві рівні колонки для кнопок
+            with col4:
+                st.button("Спробувати ще раз", on_click=reset_game, key="retry_button_col1", use_container_width=True)
+            with col5:
+                st.button("Назад", on_click=change_level, args=("menu",), key="back_button", use_container_width=True)
 
 
         st.text_input("Введіть букву:", key="current_letter", max_chars=1, on_change=process_letter)
