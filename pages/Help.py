@@ -5,7 +5,7 @@ import utils
 def app():
     # Load the CSS file to apply styles globally
     
-    st.markdown('<div class="title_header">Допомогти проекту</div>', unsafe_allow_html=True)
+    st.markdown('<div class="title_header">Допомогти проєкту</div>', unsafe_allow_html=True)
     
     st.markdown(
         """
