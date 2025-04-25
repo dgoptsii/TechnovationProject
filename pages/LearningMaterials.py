@@ -11,7 +11,7 @@ def app():
   st.markdown('<div class="title_header">Навчальні матеріали</div>', unsafe_allow_html=True)
   
  # Videos 
-  st.markdown ("Відео жестів")
+  st.markdown(f'<div class="titi">Відео жестів</div>', unsafe_allow_html=True)
   col1, col2 = st.columns(2)  # Два столбца
   with col1:
     st.video("https://youtu.be/J6Kb4hMAbHE?si=fjXLA9rZvZ9WBX_Z")
