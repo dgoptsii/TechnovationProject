@@ -61,7 +61,7 @@ def app():
     st.markdown(
         f"""
         <div style="display: flex; justify-content: center; margin-top: -20px; margin-bottom: 20px;">
-            <img src="images/Ресурс 1.svg" width="200">
+            <img src="images/Ресурс1.svg" width="200">
         </div>
         """,
         unsafe_allow_html=True
