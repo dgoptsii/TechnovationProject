@@ -67,21 +67,25 @@ def app():
             with col3:
                 pass
 
-        # Друге і третє зображення — в дві колонки поруч
+        # Друге і третє зображення — в одній колонці по центру, ближче до один одного
         if idx == 3:
-            col1, col2 = st.columns([1, 1])  # Дві рівні колонки для зображень
+            col1, col2, col3 = st.columns([1, 2, 1])  # Перша і третя колонка — порожні, друга — для зображень
             with col1:
+                pass
+            with col2:
+                # Два зображення, розташовані поруч
                 svg_path = "images/3.svg"
                 if os.path.exists(svg_path):
                     st.image(svg_path, width=200)
                 else:
                     st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
-            with col2:
                 svg_path = "images/6.svg"
                 if os.path.exists(svg_path):
                     st.image(svg_path, width=200)
                 else:
                     st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+            with col3:
+                pass
 
         # Четверте, п'яте і шосте зображення — в три колонки поруч
         if idx == 4:
