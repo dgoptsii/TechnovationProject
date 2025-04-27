@@ -8,16 +8,31 @@ def app():
     if 'language' not in st.session_state:
         st.session_state.language = 'uk'
 
-    # Кнопки вибору мови в правому верхньому куті з відступом
-    col1, col2, col3, col4 = st.columns([6, 1, 0.5, 1])
-    with col2:
-        if st.button("Українська"):
+    # Кнопки вибору мови по центру
+    st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
+
+    col_empty, col1, col2, col_empty2 = st.columns([2, 1, 1, 2])
+    with col1:
+        if st.button("Українська", use_container_width=True, key="ua_btn_help"):
             st.session_state.language = 'uk'
-    with col4:
-        if st.button("English"):
+    with col2:
+        if st.button("English", use_container_width=True, key="en_btn_help"):
             st.session_state.language = 'en'
 
-    # Тексти на двох мовах
+    # Стилі для довших кнопок
+    st.markdown(
+        """
+        <style>
+        div.stButton > button {
+            padding: 0.8em 3em;
+            font-size: 18px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Тексти для сторінки "Допомогти проекту"
     texts = {
         'uk': {
             'help_project': "Допомогти проєкту",
@@ -77,4 +92,5 @@ def app():
     st.markdown(f'<div class="text">{texts[lang]["partnership_text"]}</div>', unsafe_allow_html=True)
 
     st.markdown(f'<div class="title_subheader">{texts[lang]["respect"]}</div>', unsafe_allow_html=True)
+
 
