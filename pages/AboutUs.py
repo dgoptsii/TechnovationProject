@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import utils
 
 def app():
@@ -16,6 +17,18 @@ def app():
     with col4:
         if st.button("English"):
             st.session_state.language = 'en'
+
+     # Зчитування списку SVG файлів з папки "images"
+    image_folder = 'images'
+    image_files = [f for f in os.listdir(image_folder) if f.endswith('.svg')]
+    
+    if image_files:
+        st.markdown(
+            f'<div style="display: flex; justify-content: center;">'
+            f'<img src="images/{image_files[0]}" height="300"></div>',
+            unsafe_allow_html=True
+        )
+
 
     # Тексти на двох мовах
     texts = {
@@ -60,7 +73,7 @@ def app():
     st.markdown(
         """
         <div style="display: flex; justify-content: center; margin-top: -20px; margin-bottom: 20px;">
-            <img src="https://i.postimg.cc/44VpG0zP/IT-GIRLS.png" width="200">
+            <img src="images/{image_files[0]}" height="300"></div>',
         </div>
         """,
         unsafe_allow_html=True
@@ -77,10 +90,9 @@ def app():
     st.markdown(f'<div class="text">{texts[lang]["vision_text"]}</div>', unsafe_allow_html=True)
 
     st.markdown(f'<div class="title_subheader">{texts[lang]["goal"]}</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="text">{texts[lang]["goal_text"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="text">{texts[lang]["goal_text"]}</div>', unsafe_allow_html=True) # Зчитування списку SVG файлів з папки "images"
+    image_folder = 'images'
+    image_files = [f for f in os.listdir(image_folder) if f.endswith('.svg')]
 
-
-
-
-
-
+  
+   
