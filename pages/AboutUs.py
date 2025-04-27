@@ -1,4 +1,4 @@
-import streamlit as st 
+import streamlit as st
 import os
 import utils
 
@@ -57,14 +57,12 @@ def app():
 
     lang = st.session_state.language
 
-    # Логотип по центру над текстом, замінено на локальне зображення Ресурс 1.svg
-    svg_path = "images/Ресурс 1.svg"
-
-    # Використовуємо st.image для відображення SVG
+    # Перевірка шляху до файлу
+    svg_path = "images/1.svg"  # Оновлений шлях до файлу
     if os.path.exists(svg_path):
-        st.image(svg_path, width=200)  # Відображення SVG за допомогою st.image()
+        st.image(svg_path, width=200)  # Відображення SVG
     else:
-        st.write("Не вдалося знайти файл зображення!")
+        st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
 
     # Заголовки і тексти в залежності від мови
     st.markdown(f'<div class="title_header">{texts[lang]["about_us"]}</div>', unsafe_allow_html=True)
