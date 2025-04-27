@@ -1,5 +1,6 @@
 import streamlit as st
 import utils
+import os
 
 def app():
     utils.load_css("style.css")
@@ -56,31 +57,24 @@ def app():
         if idx == 0:
             st.markdown("""
             <div style="text-align:center;">
-                <img src="https://i.postimg.cc/mknsdQ2c/1.jpg">
+                <img src="images/2.svg" width="200">
             </div>
             """, unsafe_allow_html=True)
         if idx == 2:
             st.markdown("""
             <div style="text-align:center;">
-                <img src="https://i.postimg.cc/fLJZY2M4/3.jpg">
+                <img src="images/4.svg" width="200">
             </div>
             """, unsafe_allow_html=True)
         if idx == 3:
             st.markdown("""
             <div style="text-align:center;">
-                <img src="https://i.postimg.cc/sg4VzGTL/2.jpg">
+                <img src="images/5.svg" width="200">
             </div>
             """, unsafe_allow_html=True)
         if idx == 4:
             st.markdown("""
             <div style="text-align:center;">
-                <img src="https://i.postimg.cc/0jSsBz6c/4.jpg">
-            </div>
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/NG2BMzNm/5.jpg">
-            </div>
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/fT4Z0fFF/6.jpg">
+                <img src="images/6.svg" width="200">
             </div>
             """, unsafe_allow_html=True)
-
