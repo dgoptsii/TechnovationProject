@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import utils
 
 def app():
@@ -55,35 +56,61 @@ def app():
     for idx, rule in enumerate(texts[lang]['rules']):
         st.markdown(f'<div class="text">{rule}</div>', unsafe_allow_html=True)
 
-        # Вставка картинок після певних правил
+        # Перше зображення — по центру
         if idx == 0:
-            st.markdown("""
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/mknsdQ2c/1.jpg">
-            </div>
-            """, unsafe_allow_html=True)
-        if idx == 2:
-            st.markdown("""
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/fLJZY2M4/3.jpg">
-            </div>
-            """, unsafe_allow_html=True)
-        if idx == 3:
-            st.markdown("""
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/sg4VzGTL/2.jpg">
-            </div>
-            """, unsafe_allow_html=True)
-        if idx == 4:
-            st.markdown("""
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/0jSsBz6c/4.jpg">
-            </div>
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/NG2BMzNm/5.jpg">
-            </div>
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/fT4Z0fFF/6.jpg">
-            </div>
-            """, unsafe_allow_html=True)
+            col1, col2, col3 = st.columns([1, 2, 1])  # Перша колонка — порожня, друга — для зображення
+            with col1:
+                pass
+            with col2:
+                svg_path = "images/2.1.svg"
+                if os.path.exists(svg_path):
+                    st.image(svg_path, width=700)
+                else:
+                    st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+            with col3:
+                pass
 
+        # Друге і третє зображення — горизонтально, по центру
+        if idx == 3:
+            col1, col2, col3 = st.columns([1, 2, 1])  # Перша і третя колонка — порожні, друга — для зображень
+            with col1:
+                pass
+            with col2:
+                # Два зображення в одній колонці, горизонтально один від одного
+                col_left, col_right = st.columns([1, 1])  # Створюємо дві рівні колонки для зображень
+                with col_left:
+                    svg_path = "images/3.svg"
+                    if os.path.exists(svg_path):
+                        st.image(svg_path, width=300)
+                    else:
+                        st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+                with col_right:
+                    svg_path = "images/6.svg"
+                    if os.path.exists(svg_path):
+                        st.image(svg_path, width=300)
+                    else:
+                        st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+            with col3:
+                pass
+
+        # Четверте, п'яте і шосте зображення — в три колонки поруч
+        if idx == 4:
+            col1, col2, col3 = st.columns([1, 1, 1])  # Три рівні колонки для зображень
+            with col1:
+                svg_path = "images/2.svg"
+                if os.path.exists(svg_path):
+                    st.image(svg_path, width=200)
+                else:
+                    st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+            with col2:
+                svg_path = "images/4.svg"
+                if os.path.exists(svg_path):
+                    st.image(svg_path, width=200)
+                else:
+                    st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+            with col3:
+                svg_path = "images/5.svg"
+                if os.path.exists(svg_path):
+                    st.image(svg_path, width=200)
+                else:
+                    st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")

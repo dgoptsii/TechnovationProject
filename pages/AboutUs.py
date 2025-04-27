@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import utils
 
 def app():
@@ -56,15 +57,12 @@ def app():
 
     lang = st.session_state.language
 
-    # Логотип по центру над текстом
-    st.markdown(
-        """
-        <div style="display: flex; justify-content: center; margin-top: -20px; margin-bottom: 20px;">
-            <img src="https://i.postimg.cc/44VpG0zP/IT-GIRLS.png" width="200">
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    # Перевірка шляху до файлу
+    svg_path = "images/1.svg"  # Оновлений шлях до файлу
+    if os.path.exists(svg_path):
+        st.image(svg_path, width=200)  # Відображення SVG
+    else:
+        st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
 
     # Заголовки і тексти в залежності від мови
     st.markdown(f'<div class="title_header">{texts[lang]["about_us"]}</div>', unsafe_allow_html=True)
@@ -78,9 +76,3 @@ def app():
 
     st.markdown(f'<div class="title_subheader">{texts[lang]["goal"]}</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="text">{texts[lang]["goal_text"]}</div>', unsafe_allow_html=True)
-
-
-
-
-
-
