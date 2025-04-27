@@ -61,14 +61,12 @@ def app():
             else:
                 st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
         
-        if idx == 2:
+        if idx == 3:
             svg_path = "images/3.svg"
             if os.path.exists(svg_path):
                 st.image(svg_path, width=200)
             else:
                 st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
-        
-        if idx == 3:
             svg_path = "images/6.svg"
             if os.path.exists(svg_path):
                 st.image(svg_path, width=200)
