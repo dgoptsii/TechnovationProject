@@ -18,18 +18,6 @@ def app():
         if st.button("English"):
             st.session_state.language = 'en'
 
-     # Зчитування списку SVG файлів з папки "images"
-    image_folder = 'images'
-    image_files = [f for f in os.listdir(image_folder) if f.endswith('.svg')]
-    
-    if image_files:
-        st.markdown(
-            f'<div style="display: flex; justify-content: center;">'
-            f'<img src="images/{image_files[0]}" height="300"></div>',
-            unsafe_allow_html=True
-        )
-
-
     # Тексти на двох мовах
     texts = {
         'uk': {
@@ -69,11 +57,11 @@ def app():
 
     lang = st.session_state.language
 
-    # Логотип по центру над текстом
+    # Логотип по центру над текстом, замінено на локальне зображення Ресурс 1.svg
     st.markdown(
-        """
+        f"""
         <div style="display: flex; justify-content: center; margin-top: -20px; margin-bottom: 20px;">
-            <img src="images/{image_files[0]}" height="300"></div>',
+            <img src="images/Ресурс 1.svg" width="200">
         </div>
         """,
         unsafe_allow_html=True
@@ -90,9 +78,5 @@ def app():
     st.markdown(f'<div class="text">{texts[lang]["vision_text"]}</div>', unsafe_allow_html=True)
 
     st.markdown(f'<div class="title_subheader">{texts[lang]["goal"]}</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="text">{texts[lang]["goal_text"]}</div>', unsafe_allow_html=True) # Зчитування списку SVG файлів з папки "images"
-    image_folder = 'images'
-    image_files = [f for f in os.listdir(image_folder) if f.endswith('.svg')]
+    st.markdown(f'<div class="text">{texts[lang]["goal_text"]}</div>', unsafe_allow_html=True)
 
-  
-   
