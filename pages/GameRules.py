@@ -61,7 +61,7 @@ def app():
             with col2:
                 svg_path = "images/2.1.svg"
                 if os.path.exists(svg_path):
-                    st.image(svg_path, width=500)
+                    st.image(svg_path, width=700)
                 else:
                     st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
             with col3:
@@ -78,13 +78,13 @@ def app():
                 with col_left:
                     svg_path = "images/3.svg"
                     if os.path.exists(svg_path):
-                        st.image(svg_path, width=200)
+                        st.image(svg_path, width=300)
                     else:
                         st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
                 with col_right:
                     svg_path = "images/6.svg"
                     if os.path.exists(svg_path):
-                        st.image(svg_path, width=200)
+                        st.image(svg_path, width=300)
                     else:
                         st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
             with col3:
