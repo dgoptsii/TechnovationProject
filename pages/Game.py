@@ -18,7 +18,7 @@ def change_level(level):
 
 def reset_game():
     levels = {
-        "easy": (["А"], 3),
+        "easy": (["ВІР", "ПАР", "ПІТ"], 3),
         "medium": (["ПРАВО", "ВІРНА", "РІВНО"], 5),
         "hard": (["ПЛАНУВАННЯ", "ПРИВІТАННЯ", "УПРАВЛІННЯ"], 10)
     }
@@ -146,7 +146,7 @@ def app():
         st.session_state.not_guessed_placeholder.markdown(f'<div class="text">👎 Невгадані літери: </div>', unsafe_allow_html=True)
 
         recognition.video_capture()
-        
+
         
         if st.session_state["game_won"]==True:
             st.session_state.image_placeholder.markdown(
@@ -155,7 +155,6 @@ def app():
                 )
         else:
              st.session_state.image_placeholder.markdown(
-                f'<div style="display: flex; justify-content: center;"><img src="" width="200"></div>',
-                 unsafe_allow_html=True
+                f'<div style="display: flex; justify-content: center;"><img src="" width="200"></div>', 
+                unsafe_allow_html=True
                 )
-        

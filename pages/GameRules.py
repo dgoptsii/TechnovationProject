@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import utils
 
 def app():
@@ -8,29 +9,14 @@ def app():
     if 'language' not in st.session_state:
         st.session_state.language = 'uk'
 
-    # Кнопки вибору мови по центру
-    st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
-
-    col_empty, col1, col2, col_empty2 = st.columns([2, 1, 1, 2])
-    with col1:
-        if st.button("Українська", use_container_width=True, key="ua_btn_rules"):
-            st.session_state.language = 'uk'
+    # Кнопки вибору мови в правому верхньому куті з відступом
+    col1, col2, col3, col4 = st.columns([6, 1, 0.5, 1])
     with col2:
-        if st.button("English", use_container_width=True, key="en_btn_rules"):
+        if st.button("Українська"):
+            st.session_state.language = 'uk'
+    with col4:
+        if st.button("English"):
             st.session_state.language = 'en'
-
-    # Стилі для довших кнопок
-    st.markdown(
-        """
-        <style>
-        div.stButton > button {
-            padding: 0.8em 3em;
-            font-size: 18px;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
 
     # Тексти правил на двох мовах
     texts = {
@@ -38,10 +24,13 @@ def app():
             'title': "Правила гри",
             'rules': [
                 "Гра складається зі статичних жестів української мови. По черзі ви показуєте літери з перервами. Складність на початку вибираєте.<br>",
-                "Для того щоб гра зарахувала вашу відповідь, тримайте руку в одному положенні 5 секунд.<br>",
+                "Всі жести в грі виконуються правою рукою.<br>",
+                "Ви можете бачити слово як серію пропусків («_»), що позначають кожну літеру. Це означає, що кожна літера, яку ви ще не вгадали, залишиться у слові у вигляді підкреслення (_).<br>"
+                "Для того щоб гра зарахувала вашу відповідь, тримайте руку в одному положенні 5 секунд.<br>"
+                "Якщо жест вже був показаний і розпізнаний, він буде позначений як «already captured».<br>",
                 "Відсутні такі букви як: Ґ Д З Ї Й К Ц Щ Ь, оскільки вони нестатичні.<br>",
                 "За кожну неправильну відповідь квітка втрачає одну пелюстку. Якщо квітка залишилась без пелюсток, гра програна.<br>",
-                "Коли слово вгадано, відображається вгадане слово і привітання переможця.<br>",
+                "Коли слово вгадано відображається вгадане слово і привітання переможця.<br>",
                 "Гра лише українською мовою."
             ]
         },
@@ -67,35 +56,60 @@ def app():
     for idx, rule in enumerate(texts[lang]['rules']):
         st.markdown(f'<div class="text">{rule}</div>', unsafe_allow_html=True)
 
-        # Вставка картинок після певних правил
+        # Перше зображення — по центру
         if idx == 0:
-            st.markdown("""
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/mknsdQ2c/1.jpg">
-            </div>
-            """, unsafe_allow_html=True)
-        if idx == 2:
-            st.markdown("""
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/fLJZY2M4/3.jpg">
-            </div>
-            """, unsafe_allow_html=True)
+            col1, col2, col3 = st.columns([1, 2, 1])  # Перша колонка — порожня, друга — для зображення
+            with col1:
+                pass
+            with col2:
+                svg_path = "images/2.1.svg"
+                if os.path.exists(svg_path):
+                    st.image(svg_path, width=700)
+                else:
+                    st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+            with col3:
+                pass
+# Друге і третє зображення — горизонтально, по центру
         if idx == 3:
-            st.markdown("""
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/sg4VzGTL/2.jpg">
-            </div>
-            """, unsafe_allow_html=True)
-        if idx == 4:
-            st.markdown("""
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/0jSsBz6c/4.jpg">
-            </div>
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/NG2BMzNm/5.jpg">
-            </div>
-            <div style="text-align:center;">
-                <img src="https://i.postimg.cc/fT4Z0fFF/6.jpg">
-            </div>
-            """, unsafe_allow_html=True)
+            col1, col2, col3 = st.columns([1, 2, 1])  # Перша і третя колонка — порожні, друга — для зображень
+            with col1:
+                pass
+            with col2:
+                # Два зображення в одній колонці, горизонтально один від одного
+                col_left, col_right = st.columns([1, 1])  # Створюємо дві рівні колонки для зображень
+                with col_left:
+                    svg_path = "images/3.svg"
+                    if os.path.exists(svg_path):
+                        st.image(svg_path, width=300)
+                    else:
+                        st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+                with col_right:
+                    svg_path = "images/6.svg"
+                    if os.path.exists(svg_path):
+                        st.image(svg_path, width=300)
+                    else:
+                        st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+            with col3:
+                pass
 
+        # Четверте, п'яте і шосте зображення — в три колонки поруч
+        if idx == 4:
+            col1, col2, col3 = st.columns([1, 1, 1])  # Три рівні колонки для зображень
+            with col1:
+                svg_path = "images/2.svg"
+                if os.path.exists(svg_path):
+                    st.image(svg_path, width=200)
+                else:
+                    st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+            with col2:
+                svg_path = "images/4.svg"
+                if os.path.exists(svg_path):
+                    st.image(svg_path, width=200)
+                else:
+                    st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+            with col3:
+                svg_path = "images/5.svg"
+                if os.path.exists(svg_path):
+                    st.image(svg_path, width=200)
+                else:
+                    st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
