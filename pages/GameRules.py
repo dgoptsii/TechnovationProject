@@ -1,6 +1,6 @@
 import streamlit as st
-import utils
 import os
+import utils
 
 def app():
     utils.load_css("style.css")
@@ -55,26 +55,39 @@ def app():
 
         # Вставка картинок після певних правил
         if idx == 0:
-            st.markdown("""
-            <div style="text-align:center;">
-                <img src="images/2.svg" width="200">
-            </div>
-            """, unsafe_allow_html=True)
+            svg_path = "images/1.svg"
+            if os.path.exists(svg_path):
+                st.image(svg_path, width=200)
+            else:
+                st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+        
         if idx == 2:
-            st.markdown("""
-            <div style="text-align:center;">
-                <img src="images/4.svg" width="200">
-            </div>
-            """, unsafe_allow_html=True)
+            svg_path = "images/2.svg"
+            if os.path.exists(svg_path):
+                st.image(svg_path, width=200)
+            else:
+                st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+        
         if idx == 3:
-            st.markdown("""
-            <div style="text-align:center;">
-                <img src="images/5.svg" width="200">
-            </div>
-            """, unsafe_allow_html=True)
+            svg_path = "images/3.svg"
+            if os.path.exists(svg_path):
+                st.image(svg_path, width=200)
+            else:
+                st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+
         if idx == 4:
-            st.markdown("""
-            <div style="text-align:center;">
-                <img src="images/6.svg" width="200">
-            </div>
-            """, unsafe_allow_html=True)
+            svg_path = "images/4.svg"
+            if os.path.exists(svg_path):
+                st.image(svg_path, width=200)
+            else:
+                st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+            svg_path = "images/5.svg"
+            if os.path.exists(svg_path):
+                st.image(svg_path, width=200)
+            else:
+                st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+            svg_path = "images/6.svg"
+            if os.path.exists(svg_path):
+                st.image(svg_path, width=200)
+            else:
+                st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
