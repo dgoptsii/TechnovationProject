@@ -87,6 +87,27 @@
 
 
 
+.retry-button button, .back-button button {
+    background-color: #3DB387;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 12px;
+    border: 1px solid #276B5A;
+    transition: 0.3s ease;
+    white-space: nowrap; 
+}
+
+.retry-button button:hover, .back-button button:hover {
+    background-color: #276B5A;
+    color: #EFE9D3;
+    border-color: #588F7C;
+}
+
+
+
+
 
 .retry-button button, .back-button button {
     background-color: #3DB387;
