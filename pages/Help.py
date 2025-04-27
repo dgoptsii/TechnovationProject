@@ -1,59 +1,80 @@
 import streamlit as st
 import utils
-# Function to load the CSS
 
 def app():
-    # Load the CSS file to apply styles globally
-    
-    st.markdown('<div class="title_header">Допомогти проєкту</div>', unsafe_allow_html=True)
-    
-    st.markdown(
-        """
-        <div class="text">
-            Приєднуйтесь до нас і допоможіть будувати інклюзивне майбутнє!<br>
-            Станьте частиною нашої спільноти – разом ми можемо змінити світ!<br> <br>
-            Якщо у вас виникають питання чи якісь проблеми, ви можете звернутися до нас за електронною адресою:<br> 
-            hartingestures@gmail.com
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-    st.markdown('<div class="title_subheader">Ваші відгуки - важливі для нас ☺️!</div>', unsafe_allow_html=True)
-    
-    st.markdown(
-        """
-        <div class="text" style="margin-top: 30px;">
-            <strong>Нам важлива ваша думка!</strong><br>
-            Якщо у вас є ідеї щодо покращення гри або ви хочете поділитися своїми враженнями — напишіть нам!<br><br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScAlVmTQe6wKm4U7bqtnEbU8pravDP0XuGnP7ZlMWWw9SPSHA/viewform?usp=header" target="_blank">Надіслати відгук</a>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    utils.load_css("style.css")
 
-    st.markdown('<div class="title_subheader">Розповсюджнення інформації 🤳</div>', unsafe_allow_html=True)
-    
-    st.markdown(
-        """
-         <div class="text">
-           Розкажіть про наш проєкт друзям, у соцмережах чи на заходах. 
-           Це допомагає нам знайти нову аудиторію та потенціальних партнерів.<br><br>
-           <a href="https://www.instagram.com/heartingestures_/profilecard/?igsh=bHd2bGJnaWg4Ynp4" target="_blank">Наш Інстаграм</a>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    # Сесійний стан для мови
+    if 'language' not in st.session_state:
+        st.session_state.language = 'uk'
 
-    st.markdown('<div class="title_subheader">Партнерсво 🤝</div>', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <div class="text">
-            Ми відкриті для співпраці з огранізаціями, які поділяють наші цінності!<br> 
-            Напишіть нам, якщо хочете стати частиною змін:<br> 
-            heartingestures@gmail.com
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    # Кнопки вибору мови в правому верхньому куті з відступом
+    col1, col2, col3, col4 = st.columns([6, 1, 0.5, 1])
+    with col2:
+        if st.button("Українська"):
+            st.session_state.language = 'uk'
+    with col4:
+        if st.button("English"):
+            st.session_state.language = 'en'
 
-    st.markdown('<div class="title_subheader">З повагою, команда Grlpwr!</div>', unsafe_allow_html=True)
+    # Тексти на двох мовах
+    texts = {
+        'uk': {
+            'help_project': "Допомогти проєкту",
+            'join_us': ("Приєднуйтесь до нас і допоможіть будувати інклюзивне майбутнє!<br>"
+                        "Станьте частиною нашої спільноти – разом ми можемо змінити світ!<br><br>"
+                        "Якщо у вас виникають питання чи якісь проблеми, ви можете звернутися до нас за електронною адресою:<br>"
+                        "hartingestures@gmail.com"),
+            'feedback_title': "Ваші відгуки - важливі для нас ☺️!",
+            'feedback_text': ("<strong>Нам важлива ваша думка!</strong><br>"
+                              "Якщо у вас є ідеї щодо покращення гри або ви хочете поділитися своїми враженнями — напишіть нам!<br><br>"
+                              "<a href='https://docs.google.com/forms/d/e/1FAIpQLScAlVmTQe6wKm4U7bqtnEbU8pravDP0XuGnP7ZlMWWw9SPSHA/viewform?usp=header' target='_blank'>Надіслати відгук</a>"),
+            'spread_info_title': "Розповсюдження інформації 🤳",
+            'spread_info_text': ("Розкажіть про наш проєкт друзям, у соцмережах чи на заходах."
+                                 " Це допомагає нам знайти нову аудиторію та потенційних партнерів.<br><br>"
+                                 "<a href='https://www.instagram.com/heartingestures_/profilecard/?igsh=bHd2bGJnaWg4Ynp4' target='_blank'>Наш Інстаграм</a>"),
+            'partnership_title': "Партнерство 🤝",
+            'partnership_text': ("Ми відкриті для співпраці з організаціями, які поділяють наші цінності!<br>"
+                                 "Напишіть нам, якщо хочете стати частиною змін:<br>"
+                                 "hartingestures@gmail.com"),
+            'respect': "З повагою, команда Grlpwr!"
+        },
+        'en': {
+            'help_project': "Support the Project",
+            'join_us': ("Join us and help build an inclusive future!<br>"
+                        "Become part of our community — together we can change the world!<br><br>"
+                        "If you have any questions or problems, you can contact us at:<br>"
+                        "hartingestures@gmail.com"),
+            'feedback_title': "Your feedback is important to us ☺️!",
+            'feedback_text': ("<strong>Your opinion matters!</strong><br>"
+                              "If you have ideas for improving the game or want to share your impressions — write to us!<br><br>"
+                              "<a href='https://docs.google.com/forms/d/e/1FAIpQLScAlVmTQe6wKm4U7bqtnEbU8pravDP0XuGnP7ZlMWWw9SPSHA/viewform?usp=header' target='_blank'>Send feedback</a>"),
+            'spread_info_title': "Spreading Information 🤳",
+            'spread_info_text': ("Tell your friends about our project, share it on social media or at events."
+                                 " This helps us find a new audience and potential partners.<br><br>"
+                                 "<a href='https://www.instagram.com/heartingestures_/profilecard/?igsh=bHd2bGJnaWg4Ynp4' target='_blank'>Our Instagram</a>"),
+            'partnership_title': "Partnership 🤝",
+            'partnership_text': ("We are open to cooperation with organizations that share our values!<br>"
+                                 "Write to us if you want to become part of the changes:<br>"
+                                 "hartingestures@gmail.com"),
+            'respect': "Respectfully, Grlpwr Team!"
+        }
+    }
+
+    lang = st.session_state.language
+
+    # Відображення вмісту
+    st.markdown(f'<div class="title_header">{texts[lang]["help_project"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="text">{texts[lang]["join_us"]}</div>', unsafe_allow_html=True)
+
+    st.markdown(f'<div class="title_subheader">{texts[lang]["feedback_title"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="text" style="margin-top: 30px;">{texts[lang]["feedback_text"]}</div>', unsafe_allow_html=True)
+
+    st.markdown(f'<div class="title_subheader">{texts[lang]["spread_info_title"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="text">{texts[lang]["spread_info_text"]}</div>', unsafe_allow_html=True)
+
+    st.markdown(f'<div class="title_subheader">{texts[lang]["partnership_title"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="text">{texts[lang]["partnership_text"]}</div>', unsafe_allow_html=True)
+
+    st.markdown(f'<div class="title_subheader">{texts[lang]["respect"]}</div>', unsafe_allow_html=True)
+
