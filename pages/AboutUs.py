@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as st 
 import os
 import utils
 
@@ -58,14 +58,13 @@ def app():
     lang = st.session_state.language
 
     # Логотип по центру над текстом, замінено на локальне зображення Ресурс 1.svg
-    st.markdown(
-        f"""
-        <div style="display: flex; justify-content: center; margin-top: -20px; margin-bottom: 20px;">
-            <img src="images/1.svg" width="200">
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    svg_path = "images/Ресурс 1.svg"
+
+    # Використовуємо st.image для відображення SVG
+    if os.path.exists(svg_path):
+        st.image(svg_path, width=200)  # Відображення SVG за допомогою st.image()
+    else:
+        st.write("Не вдалося знайти файл зображення!")
 
     # Заголовки і тексти в залежності від мови
     st.markdown(f'<div class="title_header">{texts[lang]["about_us"]}</div>', unsafe_allow_html=True)
@@ -79,4 +78,3 @@ def app():
 
     st.markdown(f'<div class="title_subheader">{texts[lang]["goal"]}</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="text">{texts[lang]["goal_text"]}</div>', unsafe_allow_html=True)
-
