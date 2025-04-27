@@ -55,14 +55,14 @@ def app():
 
         # Вставка картинок після певних правил
         if idx == 0:
-            svg_path = "images/1.svg"
+            svg_path = "images/2.1.svg"
             if os.path.exists(svg_path):
                 st.image(svg_path, width=200)
             else:
                 st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
         
         if idx == 2:
-            svg_path = "images/2.svg"
+            svg_path = "images/3.svg"
             if os.path.exists(svg_path):
                 st.image(svg_path, width=200)
             else:
@@ -74,19 +74,24 @@ def app():
                 st.image(svg_path, width=200)
             else:
                 st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+            svg_path = "images/6.svg"
+            if os.path.exists(svg_path):
+                st.image(svg_path, width=200)
+            else:
+                st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
 
         if idx == 4:
+            svg_path = "images/2.svg"
+            if os.path.exists(svg_path):
+                st.image(svg_path, width=200)
+            else:
+                st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
             svg_path = "images/4.svg"
             if os.path.exists(svg_path):
                 st.image(svg_path, width=200)
             else:
                 st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
             svg_path = "images/5.svg"
-            if os.path.exists(svg_path):
-                st.image(svg_path, width=200)
-            else:
-                st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
-            svg_path = "images/6.svg"
             if os.path.exists(svg_path):
                 st.image(svg_path, width=200)
             else:
