@@ -1,50 +1,82 @@
 import streamlit as st
 import random
+import utils
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from model.keypoint_classifier import recognition
+
 
 def change_level(level):
-    st.session_state["level"] = level  # Змінюємо рівень
-    reset_game()  # Очищуємо дані після зміни рівня
+    st.session_state.clear()  # Скидає весь session_state
+    st.session_state["level"] = level
+    if level != "menu":
+        reset_game()
+
+    
 
 def reset_game():
-    """Функція для скидання гри (нове слово, 5 спроб, порожній список букв)."""
-    if st.session_state["level"] == "easy":
-        st.session_state["random_word"] = random.choice(["ВІР", "ПАР", "ПІТ"])
-        st.session_state["count"] = 3
-    elif st.session_state["level"] == "medium":
-        st.session_state["random_word"] = random.choice(["ПРАВО", "ВІРНА", "РІВНО"])
-        st.session_state["count"] = 5
-    elif st.session_state["level"] == "hard":
-        st.session_state["random_word"] = random.choice(["ПЛАНУВАННЯ", "ПРИВІТАННЯ", "УПРАВЛІННЯ"])
-        st.session_state["count"] = 10  # Збільшено кількість спроб для складного рівня
-
+    levels = {
+        "easy": (["ВІР", "ПАР", "ПІТ"], 3),
+        "medium": (["ПРАВО", "ВІРНА", "РІВНО"], 5),
+        "hard": (["ПЛАНУВАННЯ", "ПРИВІТАННЯ", "УПРАВЛІННЯ"], 10)
+    }
+    words, tries = levels[st.session_state["level"]]
+    st.session_state["random_word"] = random.choice(words)
+    st.session_state["count"] = tries
     st.session_state["guessed_letters"] = []
-    st.session_state["current_letter"] = ""
-    st.session_state["wrong_letters"] = []
+    st.session_state["not_guessed_letters"] = []
+    st.session_state["recognized_letter"] = ""
+    st.session_state["game_won"] = False
+    st.session_state["display_word"] = " ".join(["_" for _ in st.session_state["random_word"]])
 
-wrong_letters_block = st.empty()
-def app(): 
+def set_placeholders():
+    col1, col2 = st.columns(2)
+    with col1:
+        if "gesture_placeholder" not in st.session_state:
+            st.session_state.gesture_placeholder = st.empty()
+        if "guessed_placeholder" not in st.session_state:
+            st.session_state.guessed_placeholder = st.empty()
+    with col2:
+        if "word_placeholder" not in st.session_state:
+            st.session_state.word_placeholder = st.empty()
+        if "not_guessed_placeholder" not in st.session_state:
+            st.session_state.not_guessed_placeholder = st.empty()
+        
+
+def app():
+    utils.load_css("style.css")
     if "level" not in st.session_state:
-        st.session_state["level"] = "menu"
+        st.session_state.level = "menu"
 
-    st.markdown('<div class="titi">Гра</div>', unsafe_allow_html=True)
-
-    if st.session_state["level"] == "menu":
-        st.subheader("Виберіть рівень:")
-        st.button("Легкий", on_click=change_level, args=("easy",), key="easy_button", use_container_width=True)
-        st.button("Середній", on_click=change_level, args=("medium",), key="medium_button", use_container_width=True)
-        st.button("Складний", on_click=change_level, args=("hard",), key="hard_button", use_container_width=True)
-
+    if st.session_state.level == "menu":
+        st.markdown('<div class="title_header">Гра</div>', unsafe_allow_html=True)
+        st.markdown('<div class="title_subheader">Виберіть рівень:</div>', unsafe_allow_html=True)
+        st.session_state.easy= st.button("Легкий", on_click=change_level, args=("easy",), key="easy_button", use_container_width=True)
+        st.session_state.medium= st.button("Середній", on_click=change_level, args=("medium",), key="medium_button", use_container_width=True)
+        st.session_state.hard= st.button("Складний", on_click=change_level, args=("hard",), key="hard_button", use_container_width=True)
     else:
-        levels = {
-            "easy": ("Легкий рівень", [
+        st.session_state.easy = st.empty()  
+        st.session_state.medium = st.empty()
+        st.session_state.hard = st.empty()
+        
+        level_titles = {
+            "easy": "Легкий рівень",
+            "medium": "Середній рівень",
+            "hard": "Складний рівень"
+        }
+
+        image_sets = {
+            "easy": [
                 "https://i.postimg.cc/xjbC1sgp/2025-03-16-150455.png",
                 "https://i.postimg.cc/TYwtbDLs/2025-03-16-150621.png",
                 "https://i.postimg.cc/9fjPLR0C/2025-03-16-150721.png",
                 "https://i.postimg.cc/W35Mp5n1/2025-03-16-150757.png",
                 "https://i.postimg.cc/28sn5b4h/2025-03-16-150811.png",
                 "https://i.postimg.cc/jjKNzp3j/2025-03-16-150835.png"
-            ]),
-            "medium": ("Середній рівень", [
+            ],
+            "medium": [
                 "https://i.postimg.cc/TwTnVzw9/2025-03-16-154207.png",
                 "https://i.postimg.cc/vH4ftLQp/2025-03-16-154229.png",
                 "https://i.postimg.cc/1zQFSkpQ/2025-03-16-154249.png",
@@ -54,8 +86,8 @@ def app():
                 "https://i.postimg.cc/QC4PGgP2/2025-03-16-155036.png",
                 "https://i.postimg.cc/QNmZJ16k/2025-03-16-155049.png",
                 "https://i.postimg.cc/wB8rpjfj/2025-03-16-155109.png"
-            ]),
-            "hard": ("Складний рівень", [
+            ],
+            "hard": [
                 "https://i.postimg.cc/mDb2LmBm/2025-03-18-203502.png",
                 "https://i.postimg.cc/sfT9R8s0/2025-03-18-203545.png",
                 "https://i.postimg.cc/mr3Cppmj/2025-03-18-204922.png",
@@ -70,62 +102,59 @@ def app():
                 "https://i.postimg.cc/B652jYrk/2025-03-18-210123.png",
                 "https://i.postimg.cc/k5mZ64D5/2025-03-18-210539.png",
                 "https://i.postimg.cc/44D1N0Yf/2025-03-18-210322.png"
-            ])
+            ]
         }
 
-        level_name, image_paths = levels.get(st.session_state["level"], ("", []))
-        st.subheader(level_name)
+        level = st.session_state.level
+        level_name = level_titles[level]
+        images = image_sets[level]
+
+        st.markdown(f'<div class="title_subheader">{level_name}</div>', unsafe_allow_html=True)
 
         if "random_word" not in st.session_state:
             reset_game()
 
-        random_word = st.session_state["random_word"]
+        word = st.session_state["random_word"]
         count = st.session_state["count"]
-        guessed_letters = st.session_state["guessed_letters"]
 
-        img_index = max(0, min(len(image_paths) - 1, len(image_paths) - 1 - count))
+        if "images" not in st.session_state:
+            st.session_state.images = images
+        col1, col2 = st.columns(2)
 
-        # Центрування зображення з use_container_width
-        col1, col2, col3 = st.columns([1, 4, 1])  # Три колонки, центральна велика
+        with col1:
+            if "image_placeholder" not in st.session_state:
+                st.session_state.image_placeholder = st.empty()
         with col2:
-            st.image(image_paths[img_index], use_container_width=True)
+            if "video_placeholder" not in st.session_state:
+                st.session_state.video_placeholder = st.empty()
 
-        display_word = "".join([letter if letter in guessed_letters else "_" for letter in random_word])
-        display_word = display_word[0].upper() + display_word[1:].lower()
-        st.subheader(f"Слово: {display_word}")
+        img_index = max(0, min(len(images) - 1, len(images) - count))
 
-
-        def process_letter():
-            letter = st.session_state["current_letter"].upper()
-            if letter and letter not in guessed_letters and letter.isalpha():
-                if letter in random_word:
-                    guessed_letters.append(letter)
-                    st.session_state["guessed_letters"] = guessed_letters
-                else:
-                    st.session_state["count"] -= 1
-                if letter not in st.session_state["wrong_letters"]:
-                    st.session_state["wrong_letters"].append(letter)
-                    st.session_state["current_letter"] = ""
-
-        st.text_input("Введіть букву:", key="current_letter", max_chars=1, on_change=process_letter)
-        wrong_letters_str = ", ".join(st.session_state["wrong_letters"])
-        wrong_letters_block.info(f"Неправильні літери: {wrong_letters_str}" if wrong_letters_str else "Неправильні літери: —")
-
-        if "_" not in display_word:
-            st.success(f"🎉 Ви виграли! Слово: {random_word}")
-            st.markdown('<div class="retry-button">', unsafe_allow_html=True)
-           
-        elif st.session_state["count"] == 0:
-            st.error(f"❌ Ви програли. Загадане слово: {random_word}")
-            st.markdown('<div class="retry-button">', unsafe_allow_html=True)
+        st.session_state.image_placeholder.markdown(
+                f'<div><img src="{images[img_index]}" height="300"></div>',
+                 unsafe_allow_html=True
+                )
 
 
-             # Центрування кнопок разом в одній колонці
-        col1, col2, col3 = st.columns([1, 2, 1])  # Три колонки, середня ширша для кнопок
-        with col2:
-            # Створюємо дві кнопки одну біля одної
-            col4, col5 = st.columns([1, 1])  # Дві рівні колонки для кнопок
-            with col4:
-                st.button("Спробувати ще раз", on_click=reset_game, key="retry_button_col1", use_container_width=True)
-            with col5:
-                st.button("Назад", on_click=change_level, args=("menu",), key="back_button", use_container_width=True)
+        set_placeholders()
+
+        st.button("Назад", on_click=lambda: change_level("menu"), key="back_1button", use_container_width=True)
+       
+        st.session_state.gesture_placeholder.markdown(f'<div class="text">✋ Жест: {st.session_state.get("recognized_letter", [])}</div>', unsafe_allow_html=True)
+        st.session_state.word_placeholder.markdown(f'<div class="text">Слово: {st.session_state["display_word"]}</div>', unsafe_allow_html=True)
+        st.session_state.guessed_placeholder.markdown(f'<div class="text">👍 Вгадані літери: </div>', unsafe_allow_html=True)
+        st.session_state.not_guessed_placeholder.markdown(f'<div class="text">👎 Невгадані літери: </div>', unsafe_allow_html=True)
+
+        recognition.video_capture()
+
+        
+        if st.session_state["game_won"]==True:
+            st.session_state.image_placeholder.markdown(
+                f'<div style="display: flex; justify-content: center;"><img src="" width="200"></div>',
+                 unsafe_allow_html=True
+                )
+        else:
+             st.session_state.image_placeholder.markdown(
+                f'<div style="display: flex; justify-content: center;"><img src="" width="200"></div>', 
+                unsafe_allow_html=True
+                )
