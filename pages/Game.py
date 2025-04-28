@@ -8,14 +8,14 @@ def change_level(level):
 def reset_game():
     """Функція для скидання гри (нове слово, 5 спроб, порожній список букв)."""
     if st.session_state["level"] == "easy":
-        st.session_state["random_word"] = random.choice(["ДОБРО", "ЛЮБОВ", "ДРУЗІ"])
-        st.session_state["count"] = 5
+        st.session_state["random_word"] = random.choice(["ВІР", "ПАР", "ПІТ"])
+        st.session_state["count"] = 3
     elif st.session_state["level"] == "medium":
-        st.session_state["random_word"] = random.choice(["СМІЛИВИЙ", "ЧАРІВНИЙ", "ВАЖЛИВИЙ"])
-        st.session_state["count"] = 8
+        st.session_state["random_word"] = random.choice(["ПРАВО", "ВІРНА", "РІВНО"])
+        st.session_state["count"] = 5
     elif st.session_state["level"] == "hard":
-        st.session_state["random_word"] = random.choice(["ВИПРОБУВАННЯ", "МАТЕМАТИКА", "ЕНЕРГІЯ"])
-        st.session_state["count"] = 12  # Збільшено кількість спроб для складного рівня
+        st.session_state["random_word"] = random.choice(["ПЛАНУВАННЯ", "ПРИВІТАННЯ", "УПРАВЛІННЯ"])
+        st.session_state["count"] = 10  # Збільшено кількість спроб для складного рівня
 
     st.session_state["guessed_letters"] = []
     st.session_state["current_letter"] = ""

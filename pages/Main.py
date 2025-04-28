@@ -2,7 +2,7 @@ import streamlit as st
 import GameRules 
 import Game
 import AboutUs
-import Partners
+import PublicOrganizations
 import LearningMaterials
 import utils
 
@@ -13,9 +13,9 @@ PAGES = {
     "Навчальні матеріали": LearningMaterials, 
     "Гра": Game, 
     "Про проект": AboutUs,
+    "Правила гри": GameRules,
     "Гра": Game, 
-    "Начальні матеріали": LearningMaterials, 
-    "Партнери": Partners
+    "Громадські організації": PublicOrganizations
 }
 
 st.sidebar.title('Меню')
