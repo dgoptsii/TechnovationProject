@@ -100,10 +100,12 @@ def draw_info_text(image, brect, handedness, hand_sign_text, remaining_seconds=N
                    cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
     return image
 
-def returnUkrainanLetter(number):
-    letter = 'Я'
-    #для кожного номера
-    return letter
+def returnUkrainanLetter(label):
+    mapping = {
+          "A": "A",
+          "V": "B"
+    }
+    return mapping.get(label.upper(), "?")
 
 def video_capture():
     args = get_args()
@@ -177,12 +179,14 @@ def video_capture():
                 debug_image = draw_info_text(debug_image, brect, handedness, label, remaining_seconds)
 
 
+                
+                st.session_state['recognized_letter'] = letter 
+                # ukrainian_letter = returnUkrainianLetter(hand_sign_id)
+                #замінити label.upper() на ukrainian_letter.upper()
+                #label =  returnUkrainanLetter 
 
-                # ukrainian_letter = returnUkrainanLetter(hand_sign_id)
-                # замінити label.upper() на ukrainian_letter.upper()
-
-                letter = label.upper()
-                st.session_state['recognized_letter'] = label.upper()
+                letter =  ukrainian_letter.upper()
+                st.session_state['recognized_letter'] =  ukrainian_letter.upper()
 
                 st.session_state.gesture_placeholder.markdown(
                     f'<div class="text">✋ Жест: {st.session_state.get("recognized_letter", [])}</div>', 
