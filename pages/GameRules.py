@@ -9,14 +9,33 @@ def app():
     if 'language' not in st.session_state:
         st.session_state.language = 'uk'
 
-    # Кнопки вибору мови в правому верхньому куті з відступом
-    col1, col2, col3, col4 = st.columns([6, 1, 0.5, 1])
-    with col2:
-        if st.button("Українська"):
+    # Сесійний стан для мови
+    if 'language' not in st.session_state:
+        st.session_state.language = 'uk'
+
+    # Кнопки вибору мови по центру
+    st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
+
+    col_empty, col1, col2, col_empty2 = st.columns([2, 1, 1, 2])
+    with col1:
+        if st.button("Українська", use_container_width=True, key="ua_btn_about_final"):
             st.session_state.language = 'uk'
-    with col4:
-        if st.button("English"):
+    with col2:
+        if st.button("English", use_container_width=True, key="en_btn_about_final"):
             st.session_state.language = 'en'
+
+    # Стилі для красивих кнопок
+    st.markdown(
+        """
+        <style>
+        div.stButton > button {
+            padding: 0.8em 3em;
+            font-size: 18px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
     # Тексти правил на двох мовах
     texts = {
@@ -24,7 +43,6 @@ def app():
             'title': "Правила гри",
             'rules': [
                 "Гра складається зі статичних жестів української мови. По черзі ви показуєте літери з перервами. Складність на початку вибираєте.<br>",
-                "Коли ви виберете певний рівень, з'явиться спеціальний екран з функцією відстеження скелету.<br>",
                 "Всі жести в грі виконуються правою рукою.<br>",
                 "Ви можете бачити слово як серію пропусків («_»), що позначають кожну літеру. Це означає, що кожна літера, яку ви ще не вгадали, залишиться у слові у вигляді підкреслення (_).<br>"
                 "Для того щоб гра зарахувала вашу відповідь, тримайте руку в одному положенні 5 секунд.<br>"
@@ -71,7 +89,7 @@ def app():
             with col3:
                 pass
 
-        # Друге і третє зображення — горизонтально, по центру
+# Друге і третє зображення — горизонтально, по центру
         if idx == 3:
             col1, col2, col3 = st.columns([1, 2, 1])  # Перша і третя колонка — порожні, друга — для зображень
             with col1:
