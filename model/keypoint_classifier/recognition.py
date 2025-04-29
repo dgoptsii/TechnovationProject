@@ -175,7 +175,7 @@ def draw_info_text(image, brect, handedness, hand_sign_text, remaining_seconds=N
 
 
 
-def returnUkrainianLetter(label):
+def returnUkrainanLetter(label):
     mapping = {
         "A": "А",
         "B": "Б",
