@@ -39,8 +39,7 @@ def app():
             <img src="https://i.postimg.cc/44VpG0zP/IT-GIRLS.png" width="250">
         </div>
         """,
-        unsafe_allow_html=True
-    )
+        unsafe_allow_html=True)
 
     # Тексти на двох мовах
     texts = {
