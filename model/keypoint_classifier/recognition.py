@@ -177,29 +177,29 @@ def draw_info_text(image, brect, handedness, hand_sign_text, remaining_seconds=N
 
 def returnUkrainanLetter(label):
     mapping = {
+        "V": "В",
+        "Y": "У",
+        "R": "Р",
         "A": "А",
-        "B": "Б",
-        "C": "Ц",
-        "CH": "Ч",
-        "E": "Е",
-        "F": "Ф",
-        "G": "Г",
+        "YA":"Я",
+        "N": "Н",
         "I": "І",
+        "T": "Т",
+        "U": "И",
+        "P": "П",
+        "G": "Г",
+        "E": "Е",
+        "Z": "Ж",
         "L": "Л",
         "M": "М",
-        "N": "Н",
         "O": "О",
-        "P": "П",
-        "R": "Р",
-        "SH": "Ш",
-        "T": "Т",
-        "U": "У",
-        "V": "В",
-        "X": "КС",
-        "Y": "И",      
-        "YA": "Я",
-        "YU": "Ю",
-        "Z": "З"
+        "C": "С",
+        "F": "Ф",
+        "SH":"Ш",
+        "YU":"Ю",      
+        "X": "Х",
+        "CH":"Ч",
+        "B": "Б"
     }
     return mapping.get(label.upper(), "?")
 
