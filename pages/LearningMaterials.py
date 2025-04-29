@@ -61,14 +61,65 @@ def app():
 
     # Відео розділ
     st.markdown(f'<div class="titi">{texts[lang]["video_title"]}</div>', unsafe_allow_html=True)
-    col1, col2 = st.columns(2)
+    col1, col2,= st.columns(2)
     with col1:
         st.video("https://youtu.be/J6Kb4hMAbHE?si=fjXLA9rZvZ9WBX_Z")
         st.markdown(f'<div class="text">{texts[lang]["timecode_text"]}</div>', unsafe_allow_html=True)
     with col2:
         st.video("https://youtu.be/YKD8q4OQhPo?si=4YgiNlWU8sDv-dKP")
         st.markdown(f'<div class="text">{texts[lang]["greeting_video_text"]}</div>', unsafe_allow_html=True)
+        
 
     # Навчальні матеріали лінки
     st.markdown(f'<div class="title_subheader">{texts[lang]["materials_title"]}</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="text">{texts[lang]["links"]}</div>', unsafe_allow_html=True)
+
+
+    # Алфавіт
+    st.markdown(f'<div class="titi">{texts[lang]["video_title"]}</div>', unsafe_allow_html=True)
+
+    # Создаем 3 колонки
+    col1, col2, col3, col4, col5, col6 = st.columns(6)
+    
+     # Видео для першого столбца
+    with col1:
+     st.video("https://www.youtube.com/watch?v=Y3yPvsOLc5k")
+     st.video("https://www.youtube.com/watch?v=A4kQCBdG5HA")
+     st.video("https://www.youtube.com/watch?v=q_6cni-XkUY")
+     st.video("https://www.youtube.com/watch?v=X2ymxV1SB_M")
+
+     # Видео для другого столбца
+    with col2:
+     st.video("https://www.youtube.com/watch?v=8j7KZnsBfhY")
+     st.video("https://www.youtube.com/watch?v=teAEIt6anLE")
+     st.video("https://www.youtube.com/watch?v=B78Ou5oPtdo")
+     st.video("https://www.youtube.com/watch?v=uCRSEbYOys4")
+
+     # Видео для третього столбца
+    with col3:
+     st.video("https://www.youtube.com/watch?v=nJfXbqjyaB4")
+     st.video("https://www.youtube.com/watch?v=9ivfqYlRQw4")
+     st.video("https://www.youtube.com/watch?v=rin2PWlz2Ns")
+     st.video("https://www.youtube.com/watch?v=02Cb_huQRmw")
+
+    # Видео для четвертого столбца
+    with col4:
+     st.video("https://www.youtube.com/watch?v=m2pcbkZKQCU")
+     st.video("https://www.youtube.com/watch?v=2Xzzg2Qk_zA")
+     st.video("https://www.youtube.com/watch?v=LJjonvptVAo")
+     st.video("https://www.youtube.com/watch?v=WeBxscv_iFE")
+
+    # Видео для п'ятого столбца
+    with col5:
+     st.video("https://www.youtube.com/watch?v=LfGdX20yQ_g")
+     st.video("https://www.youtube.com/watch?v=b41xE7IH5DM")
+     st.video("https://www.youtube.com/watch?v=S1Mz4FtK3y0")
+     st.video("https://www.youtube.com/watch?v=o-UzR-smI90")
+
+    # Видео для шостого столбца
+    with col6:
+     st.video("https://www.youtube.com/watch?v=uqcAzaxvmQg")
+     st.video("https://www.youtube.com/watch?v=s5pHhi0l_ZY")
+     st.video("https://www.youtube.com/watch?v=Ziqz_58nOVo")
+
+    
