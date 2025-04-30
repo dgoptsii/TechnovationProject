@@ -2,6 +2,7 @@ import streamlit as st
 import utils
 import sys
 import os
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 def app():
@@ -35,19 +36,21 @@ def app():
         unsafe_allow_html=True
     )
 
-    # Path to your SVG file
+    # Відображення SVG по центру
     svg_path = "images/1.svg"
-
-    # Check if the file exists and display the image centered
     if os.path.exists(svg_path):
+        with open(svg_path, "r", encoding="utf-8") as f:
+            svg_code = f.read()
         st.markdown(
-        f"""
-        <div style="display: flex; justify-content: center;">
-            <img src="{svg_path}" width="300">
-        </div>
-        """,
-        unsafe_allow_html=True
+            f"""
+            <div style="text-align: center;">
+                <width="200"/>
+            </div>
+            """,
+            unsafe_allow_html=True
         )
+    else:
+        st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
 
     # Тексти на двох мовах
     texts = {
@@ -113,6 +116,3 @@ def app():
 
     st.markdown(f'<div class="title_subheader">{texts[lang]["goal"]}</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="text">{texts[lang]["goal_text"]}</div>', unsafe_allow_html=True)
-
-
-

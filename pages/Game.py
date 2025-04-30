@@ -1,177 +1,107 @@
 import streamlit as st
-import random
 import utils
 
-
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from model.keypoint_classifier import recognition
-
-
-
-
-def change_level(level):
-    st.session_state.clear()  # Скидає весь session_state
-    st.session_state["level"] = level
-    if level != "menu":
-        reset_game()
-
-
-   
-
-
-def reset_game():
-    levels = {
-    "easy": {
-        "allowed_letters": {"С", "О", "Н", "Ш", "У", "М", "А", "К", "І", "Р"},  # 10 літер для 1-го рівня
-        "words": ["СОН", "ШУМ", "МАК", "СИН", "РІК", "КУБ", "НІС", "ШИЯ", "БІЙ", "ВІР", "ГЕН", "БАР"]
-    },
-    "medium": {
-        "allowed_letters": {"Р", "А", "Н", "О", "К", "Б", "У", "Я", "М", "Т", "І", "Ш", "Ф", "С", "Л"},  # 15 літер для 2-го рівня
-        "words": ["РАНОК", "БУРЯК", "БІЙККА", "МАКЕТ", "ШОРТИ", "РОМАН", "ШАХТА", "ФАРБИ", "ШТОРИ", "БОРЦІ", "МОСТИ"]
-    },
-    "hard": {
-        "allowed_letters": {"А", "В", "Т", "О", "М", "Б", "І", "Л", "Ь", "Г", "Н", "Ф", "Ш", "Р", "С", "У", "Я", "Ю", "Ч", "Е"},  # 20 літер для 3-го рівня
-        "words": ["АВТОМОБІЛЬ", "ГУМАННІСТ", "АВТОРИТЕТ", "ФАРБУВАННЯ"]
-    }
-  }
-    words, tries = levels[st.session_state["level"]]
-    st.session_state["random_word"] = random.choice(words)
-    st.session_state["count"] = tries
-    st.session_state["guessed_letters"] = []
-    st.session_state["not_guessed_letters"] = []
-    st.session_state["recognized_letter"] = ""
-    st.session_state["game_won"] = False
-    st.session_state["display_word"] = " ".join(["_" for _ in st.session_state["random_word"]])
-
-
-def set_placeholders():
-    col1, col2 = st.columns(2)
-    with col1:
-        if "gesture_placeholder" not in st.session_state:
-            st.session_state.gesture_placeholder = st.empty()
-        if "guessed_placeholder" not in st.session_state:
-            st.session_state.guessed_placeholder = st.empty()
-    with col2:
-        if "word_placeholder" not in st.session_state:
-            st.session_state.word_placeholder = st.empty()
-        if "not_guessed_placeholder" not in st.session_state:
-            st.session_state.not_guessed_placeholder = st.empty()
-       
-
-
 def app():
-    utils.load_css("style.css")
+    utils.load_css("style.css")  # Завантаження стилів
 
-    # Застосовуємо білий фон тільки для цієї сторінки
-    st.markdown("""
+    # Сесійний стан для мови
+    if 'language' not in st.session_state:
+        st.session_state.language = 'uk'
+
+    # Кнопки вибору мови по центру
+    st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
+
+    col_empty, col1, col2, col_empty2 = st.columns([2, 1, 1, 2])
+    with col1:
+        if st.button("Українська", use_container_width=True, key="ua_btn_about_final"):
+            st.session_state.language = 'uk'
+    with col2:
+        if st.button("English", use_container_width=True, key="en_btn_about_final"):
+            st.session_state.language = 'en'
+
+    # Стилі для красивих кнопок
+    st.markdown(
+        """
         <style>
-        .stApp {
-            background-color: white !important;
+        div.stButton > button {
+            padding: 0.8em 3em;
+            font-size: 18px;
         }
         </style>
-    """, unsafe_allow_html=True)
+        """,
+        unsafe_allow_html=True
+    )
 
-    if "level" not in st.session_state:
-        st.session_state.level = "menu"
+    # ЛОГОТИП ЧЕРЕЗ ЗОВНІШНЄ ПОСИЛАННЯ (щоб точно працювало без помилок)
+    st.markdown(
+        """
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 30px;">
+            <img src="https://i.postimg.cc/44VpG0zP/IT-GIRLS.png" width="250">
+        </div>
+        """,
+        unsafe_allow_html=True)
 
-    if st.session_state.level == "menu":
-        st.markdown('<div class="title_header">Гра</div>', unsafe_allow_html=True)
-        st.markdown('<div class="title_subheader">Виберіть рівень:</div>', unsafe_allow_html=True)
-        st.session_state.easy = st.button("Легкий", on_click=change_level, args=("easy",), key="easy_button", use_container_width=True)
-        st.session_state.medium = st.button("Середній", on_click=change_level, args=("medium",), key="medium_button", use_container_width=True)
-        st.session_state.hard = st.button("Складний", on_click=change_level, args=("hard",), key="hard_button", use_container_width=True)
-    else:
-        st.session_state.easy = st.empty()
-        st.session_state.medium = st.empty()
-        st.session_state.hard = st.empty()
-
-        level_titles = {
-            "easy": "Легкий рівень",
-            "medium": "Середній рівень",
-            "hard": "Складний рівень"
-        }
-
-        image_sets = {
-            "easy": [
-                "https://i.postimg.cc/MpbcWJW1/3-3.png",
-                "https://i.postimg.cc/05Jx7gzm/3-2.png",
-                "https://i.postimg.cc/bvJfJ4XZ/3-1.png"
-            ],
-            "medium": [
-                "https://i.postimg.cc/cJ6PZYYY/5-5.png",
-                "https://i.postimg.cc/HWbRpTJS/5-4.png",
-                "https://i.postimg.cc/q7tDWrVx/5-3.png",
-                "https://i.postimg.cc/DZLjyczW/5-2.png",
-                "https://i.postimg.cc/hvnCJ7J2/5-1.png"
-            ],
-            "hard": [
-                "https://i.postimg.cc/m28dDkTS/10-10.png",
-                "https://i.postimg.cc/g2jg6pJb/10-9.png",
-                "https://i.postimg.cc/Cx2mG2BB/10-8.png",
-                "https://i.postimg.cc/xdbgtPMs/10-7.png",
-                "https://i.postimg.cc/441PLyHT/10-6.png",
-                "https://i.postimg.cc/CxR4x4PF/10-5.png",
-                "https://i.postimg.cc/t48NZVwF/10-4.png",
-                "https://i.postimg.cc/yx6m4h3C/10-3.png",
-                "https://i.postimg.cc/66zVVPFW/10-2.png",
-                "https://i.postimg.cc/VLVjpCY2/10-1.png"
-            ]
-        }
-
-        level = st.session_state.level
-        level_name = level_titles[level]
-        images = image_sets[level]
-
-        st.markdown(f'<div class="title_subheader">{level_name}</div>', unsafe_allow_html=True)
-
-        if "random_word" not in st.session_state:
-            reset_game()
-
-        word = st.session_state["random_word"]
-        count = st.session_state["count"]
-
-        if "images" not in st.session_state:
-            st.session_state.images = images
-        col1, col2 = st.columns(2)
-
-        with col1:
-            if "image_placeholder" not in st.session_state:
-                st.session_state.image_placeholder = st.empty()
-        with col2:
-            if "video_placeholder" not in st.session_state:
-                st.session_state.video_placeholder = st.empty()
-
-        img_index = max(0, min(len(images) - 1, len(images) - count))
-
-        st.session_state.image_placeholder.markdown(
-            f'<div><img src="{images[img_index]}" height="300"></div>',
-            unsafe_allow_html=True
-        )
-
-        set_placeholders()
-
-        st.button("Назад", on_click=lambda: change_level("menu"), key="back_1button", use_container_width=True)
-
-        st.session_state.gesture_placeholder.markdown(
-            f'<div class="text">✋ Жест: {st.session_state.get("recognized_letter", [])}</div>', unsafe_allow_html=True)
-        st.session_state.word_placeholder.markdown(
-            f'<div class="text">Слово: {st.session_state["display_word"]}</div>', unsafe_allow_html=True)
-        st.session_state.guessed_placeholder.markdown(
-            f'<div class="text">👍 Вгадані літери: </div>', unsafe_allow_html=True)
-        st.session_state.not_guessed_placeholder.markdown(
-            f'<div class="text">👎 Невгадані літери: </div>', unsafe_allow_html=True)
-
-        recognition.video_capture()
-
-        if st.session_state["game_won"]:
-            st.session_state.image_placeholder.markdown(
-                f'<div style="display: flex; justify-content: center;"><img src="" width="200"></div>',
-                unsafe_allow_html=True
+    # Тексти на двох мовах
+    texts = {
+        'uk': {
+            'about_us': "Про нас",
+            'about_text': (
+                "Ми - група підлітків, які є учасниками міжнародного проекту \"Technovation Girls\". <br><br>"
+                "Ми довго думали над темою нашого проєкту, проте врешті-решт зупинилися на інклюзії. "
+                "Нашою мрією стало допомагати дітям з вадами слуху вливатися в сучасне суспільство і не відчувати себе зайвими, "
+                "допомагати їм рухатися далі. "
+                "Із часом зародилася ідея створення доступної і сучасної гри, яка є інструментом для навчання жестової мови, "
+                "яка об'єднувала б людей з різних культур та середовищ."
+            ),
+            'mission': "Місія 🎯",
+            'mission_text': "Сприяти розвитку інклюзивного суспільства, де кожен має голос.",
+            'vision': "Візія 👓",
+            'vision_text': (
+                "Світ, у якому мовне різноманіття сприймається як сила, "
+                "а кожна людина — незалежно від її здатності чути — має рівний доступ до спілкування, освіти й можливостей."
+            ),
+            'goal': "Мета 🌍",
+            'goal_text': (
+                "Сприяти побудові інклюзивного суспільства, де жестова мова є природною частиною взаємодії,"
+                "а технології стають засобом рівності, підтримки та взаєморозуміння."
             )
-        else:
-            st.session_state.image_placeholder.markdown(
-                f'<div style="display: flex; justify-content: center;"><img src="" width="200"></div>',
-                unsafe_allow_html=True
+        },
+        'en': {
+            'about_us': "About Us",
+            'about_text': (
+                "We are a group of teenagers participating in the international project \"Technovation Girls\". <br><br>"
+                "We spent a lot of time choosing a topic for our project and eventually decided on inclusion. "
+                "Our dream is to help children with hearing impairments integrate into modern society and not feel isolated, "
+                "help them move forward. "
+                "Over time, the idea of creating an accessible and modern game emerged, which would serve as a tool for learning sign language, "
+                "bringing together people from different cultures and backgrounds."
+            ),
+            'mission': "Mission 🎯",
+            'mission_text': "To promote the development of an inclusive society where everyone has a voice.",
+            'vision': "Vision 👓",
+            'vision_text': (
+                "A world where linguistic diversity is embraced as a strength, and every person — regardless of their ability to hear — "
+                "has equal access to communication, education, and opportunities."
+            ),
+            'goal': "Goal 🌍",
+            'goal_text': (
+                "To help build an inclusive society where sign language is a natural part of interaction, "
+                "and technology becomes a means of equality, support, and understanding."
             )
+        }
+    }
+
+    lang = st.session_state.language
+
+    # Заголовки і тексти
+    st.markdown(f'<div class="title_header">{texts[lang]["about_us"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="text">{texts[lang]["about_text"]}</div>', unsafe_allow_html=True)
+
+    st.markdown(f'<div class="title_subheader">{texts[lang]["mission"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="text">{texts[lang]["mission_text"]}</div>', unsafe_allow_html=True)
+
+    st.markdown(f'<div class="title_subheader">{texts[lang]["vision"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="text">{texts[lang]["vision_text"]}</div>', unsafe_allow_html=True)
+
+    st.markdown(f'<div class="title_subheader">{texts[lang]["goal"]}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="text">{texts[lang]["goal_text"]}</div>', unsafe_allow_html=True)
