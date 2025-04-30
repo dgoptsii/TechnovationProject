@@ -35,23 +35,18 @@ def app():
         """,
         unsafe_allow_html=True
     )
-
-    # Відображення SVG по центру
-    svg_path = "images/1.svg"
-    if os.path.exists(svg_path):
-        with open(svg_path, "r", encoding="utf-8") as f:
-            svg_code = f.read()
-        st.markdown(
-            f"""
-            <div style="text-align: center;">
-                <width="200"/>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-    else:
-        st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
-
+   
+    col1, col2, col3 = st.columns([1, 2, 1])  # Перша колонка — порожня, друга — для зображення
+    with col1:
+                pass
+    with col2:
+                svg_path = "images/1.svg"
+                if os.path.exists(svg_path):
+                    st.image(svg_path, width=700)
+                else:
+                    st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+    with col3:
+                pass
     # Тексти на двох мовах
     texts = {
         'uk': {
