@@ -1,5 +1,9 @@
 import streamlit as st
 import utils
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 def app():
     utils.load_css("style.css")  # Завантаження стилів
@@ -31,16 +35,18 @@ def app():
         """,
         unsafe_allow_html=True
     )
-
-    # ЛОГОТИП ЧЕРЕЗ ЗОВНІШНЄ ПОСИЛАННЯ (щоб точно працювало без помилок)
-    st.markdown(
-        """
-        <div style="display: flex; justify-content: center; align-items: center; margin-top: 30px;">
-            <img src="https://i.postimg.cc/44VpG0zP/IT-GIRLS.png" width="250">
-        </div>
-        """,
-        unsafe_allow_html=True)
-
+   
+    col1, col2, col3 = st.columns([1, 2, 1])  # Перша колонка — порожня, друга — для зображення
+    with col1:
+                pass
+    with col2:
+                svg_path = "images/1.svg"
+                if os.path.exists(svg_path):
+                    st.image(svg_path, width=700)
+                else:
+                    st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
+    with col3:
+                pass
     # Тексти на двох мовах
     texts = {
         'uk': {
@@ -105,6 +111,3 @@ def app():
 
     st.markdown(f'<div class="title_subheader">{texts[lang]["goal"]}</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="text">{texts[lang]["goal_text"]}</div>', unsafe_allow_html=True)
-
-
-

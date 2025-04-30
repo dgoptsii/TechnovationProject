@@ -58,68 +58,77 @@ def app():
 
     # Заголовок
     st.markdown(f'<div class="title_header">{texts[lang]["title"]}</div>', unsafe_allow_html=True)
-
-    # Відео розділ
-    st.markdown(f'<div class="titi">{texts[lang]["video_title"]}</div>', unsafe_allow_html=True)
-    col1, col2,= st.columns(2)
-    with col1:
-        st.video("https://youtu.be/J6Kb4hMAbHE?si=fjXLA9rZvZ9WBX_Z")
-        st.markdown(f'<div class="text">{texts[lang]["timecode_text"]}</div>', unsafe_allow_html=True)
-    with col2:
-        st.video("https://youtu.be/YKD8q4OQhPo?si=4YgiNlWU8sDv-dKP")
-        st.markdown(f'<div class="text">{texts[lang]["greeting_video_text"]}</div>', unsafe_allow_html=True)
-        
-
-    # Навчальні матеріали лінки
-    st.markdown(f'<div class="title_subheader">{texts[lang]["materials_title"]}</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="text">{texts[lang]["links"]}</div>', unsafe_allow_html=True)
 
 
-    # Алфавіт
-    st.markdown(f'<div class="titi">{texts[lang]["video_title"]}</div>', unsafe_allow_html=True)
-
-    # Создаем 3 колонки
-    col1, col2, col3, col4, col5, col6 = st.columns(6)
+    # Алфавіт жестів (Статичні букви)
+    st.markdown('<div class="titi">Алфавіт жестів (Статичні букви)</div>', unsafe_allow_html=True)
+    
+    
+    # Створюємо 3 колонки
+    col1, col2, col3, = st.columns(3)
     
      # Видео для першого столбца
     with col1:
+     
      st.video("https://www.youtube.com/watch?v=Y3yPvsOLc5k")
-     st.video("https://www.youtube.com/watch?v=A4kQCBdG5HA")
-     st.video("https://www.youtube.com/watch?v=q_6cni-XkUY")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">А</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=X2ymxV1SB_M")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Г</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=B78Ou5oPtdo")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">И</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=9ivfqYlRQw4")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">М</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=m2pcbkZKQCU")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">П</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=WeBxscv_iFE")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Т</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=S1Mz4FtK3y0")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Х</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=s5pHhi0l_ZY")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Ю</p>', unsafe_allow_html=True)
 
      # Видео для другого столбца
     with col2:
-     st.video("https://www.youtube.com/watch?v=8j7KZnsBfhY")
-     st.video("https://www.youtube.com/watch?v=teAEIt6anLE")
-     st.video("https://www.youtube.com/watch?v=B78Ou5oPtdo")
+     
+     st.video("https://www.youtube.com/watch?v=A4kQCBdG5HA")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Б</p>', unsafe_allow_html=True) 
+     st.video("https://www.youtube.com/watch?v=8j7KZnsBfhY") 
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Е</p>', unsafe_allow_html=True)   
      st.video("https://www.youtube.com/watch?v=uCRSEbYOys4")
-
-     # Видео для третього столбца
-    with col3:
-     st.video("https://www.youtube.com/watch?v=nJfXbqjyaB4")
-     st.video("https://www.youtube.com/watch?v=9ivfqYlRQw4")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">І</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=rin2PWlz2Ns")
-     st.video("https://www.youtube.com/watch?v=02Cb_huQRmw")
-
-    # Видео для четвертого столбца
-    with col4:
-     st.video("https://www.youtube.com/watch?v=m2pcbkZKQCU")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Н</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=2Xzzg2Qk_zA")
-     st.video("https://www.youtube.com/watch?v=LJjonvptVAo")
-     st.video("https://www.youtube.com/watch?v=WeBxscv_iFE")
-
-    # Видео для п'ятого столбца
-    with col5:
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Р</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=LfGdX20yQ_g")
-     st.video("https://www.youtube.com/watch?v=b41xE7IH5DM")
-     st.video("https://www.youtube.com/watch?v=S1Mz4FtK3y0")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">У</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=o-UzR-smI90")
-
-    # Видео для шостого столбца
-    with col6:
-     st.video("https://www.youtube.com/watch?v=uqcAzaxvmQg")
-     st.video("https://www.youtube.com/watch?v=s5pHhi0l_ZY")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Ч</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=Ziqz_58nOVo")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Я</p>', unsafe_allow_html=True)
+
+     
+
+    # Видео для третього столбца
+    with col3:
+     
+     st.video("https://www.youtube.com/watch?v=q_6cni-XkUY")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">В</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=teAEIt6anLE")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Ж</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=nJfXbqjyaB4")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Л</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=02Cb_huQRmw")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">О</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=LJjonvptVAo")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">С</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=b41xE7IH5DM")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Ф</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=uqcAzaxvmQg")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Ш</p>', unsafe_allow_html=True)
+
+     
+   
 
     

@@ -3,10 +3,16 @@ import random
 import utils
 
 
+
+
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from model.keypoint_classifier import recognition
+
+
+
+
 
 
 
@@ -18,15 +24,28 @@ def change_level(level):
         reset_game()
 
 
+
+
    
+
+
 
 
 def reset_game():
     levels = {
-        "easy": (["СОН", "ШУМ", "МАК", "СИН", "РІК", "КУБ", "НІС", "ШИЯ", "БІЙ", "ВІР", "ГЕН", "БАР"], 3),
-        "medium": (["СОН", "ВІРНА", "РІВНО"], 5),
-        "hard": (["АВТОМОБІЛЬ", "ГУМАННІСТ", "АВТОРИТЕТ", "ФАРБУВАННЯ"], 10)
+    "easy": {
+        "allowed_letters": {"С", "О", "Н", "Ш", "У", "М", "А", "К", "І", "Р"},  # 10 літер для 1-го рівня
+        "words": ["СОН", "ШУМ", "МАК", "РІК", "НІС", "ШИЯ", "ІКРА","КОШКА", "КОМА" "МОШКА", "СМАК", "КАМІН", "РАКУРС", "РАК", "МІШОК", "СУМ"]
+    },
+    "medium": {
+        "allowed_letters": {"Р", "А", "Н", "О", "К", "Б", "У", "Я", "М", "Т", "І", "Ш", "Ф", "С", "Л"},  # 15 літер для 2-го рівня
+        "words": ["РАНОК", "БУРЯК", "РОМАН", "ФАРБА", "ШТОРА", "МОСТИ", "РОМАШКА", "ЛІТАК", "ШАРФ", "СУМКА", "ЯНТАР", "КАША", "ТОРБА", "МІШОК", "КАРТКА" ]
+    },
+    "hard": {
+        "allowed_letters": {"А", "В", "Т", "О", "М", "Б", "І", "Л", "Х", "Г", "Н", "Ф", "Ш", "Р", "С", "У", "Я", "Ю", "Ч", "Е", "Ж", "П", "И"},  # 20 літер для 3-го рівня
+        "words": ["АВТОМОБІЛЬ", "ГУМАННІСТ", "АВТОРИТЕТ", "ФАРБУВАННЯ", "АВТОБУС", "ЧАРІВНИК", "БАРОМЕТР", "ФЛЕШКА", "СПАЛАХ", "ІНЖЕНЕР", "ЕЛЕКТРОН", "ПЕЧИВО",]
     }
+  }
     words, tries = levels[st.session_state["level"]]
     st.session_state["random_word"] = random.choice(words)
     st.session_state["count"] = tries
@@ -35,6 +54,8 @@ def reset_game():
     st.session_state["recognized_letter"] = ""
     st.session_state["game_won"] = False
     st.session_state["display_word"] = " ".join(["_" for _ in st.session_state["random_word"]])
+
+
 
 
 def set_placeholders():
@@ -52,8 +73,22 @@ def set_placeholders():
        
 
 
+
+
 def app():
     utils.load_css("style.css")
+
+
+    # Застосовуємо білий фон тільки для цієї сторінки
+    st.markdown("""
+        <style>
+        .stApp {
+            background-color: white !important;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+
     if "level" not in st.session_state:
         st.session_state.level = "menu"
 
@@ -61,14 +96,15 @@ def app():
     if st.session_state.level == "menu":
         st.markdown('<div class="title_header">Гра</div>', unsafe_allow_html=True)
         st.markdown('<div class="title_subheader">Виберіть рівень:</div>', unsafe_allow_html=True)
-        st.session_state.easy= st.button("Легкий", on_click=change_level, args=("easy",), key="easy_button", use_container_width=True)
-        st.session_state.medium= st.button("Середній", on_click=change_level, args=("medium",), key="medium_button", use_container_width=True)
-        st.session_state.hard= st.button("Складний", on_click=change_level, args=("hard",), key="hard_button", use_container_width=True)
+        st.session_state.easy = st.button("Легкий", on_click=change_level, args=("easy",), key="easy_button", use_container_width=True)
+        st.session_state.medium = st.button("Середній", on_click=change_level, args=("medium",), key="medium_button", use_container_width=True)
+        st.session_state.hard = st.button("Складний", on_click=change_level, args=("hard",), key="hard_button", use_container_width=True)
     else:
-        st.session_state.easy = st.empty()  
+        st.session_state.easy = st.empty()
         st.session_state.medium = st.empty()
         st.session_state.hard = st.empty()
-       
+
+
         level_titles = {
             "easy": "Легкий рівень",
             "medium": "Середній рівень",
@@ -81,7 +117,7 @@ def app():
                 "https://i.postimg.cc/MpbcWJW1/3-3.png",
                 "https://i.postimg.cc/05Jx7gzm/3-2.png",
                 "https://i.postimg.cc/bvJfJ4XZ/3-1.png"
-                ],
+            ],
             "medium": [
                 "https://i.postimg.cc/cJ6PZYYY/5-5.png",
                 "https://i.postimg.cc/HWbRpTJS/5-4.png",
@@ -137,36 +173,38 @@ def app():
 
 
         st.session_state.image_placeholder.markdown(
-                f'<div><img src="{images[img_index]}" height="300"></div>',
-                 unsafe_allow_html=True
-                )
-
-
+            f'<div><img src="{images[img_index]}" height="300"></div>',
+            unsafe_allow_html=True
+        )
 
 
         set_placeholders()
 
 
         st.button("Назад", on_click=lambda: change_level("menu"), key="back_1button", use_container_width=True)
-       
-        st.session_state.gesture_placeholder.markdown(f'<div class="text">✋ Жест: {st.session_state.get("recognized_letter", [])}</div>', unsafe_allow_html=True)
-        st.session_state.word_placeholder.markdown(f'<div class="text">Слово: {st.session_state["display_word"]}</div>', unsafe_allow_html=True)
-        st.session_state.guessed_placeholder.markdown(f'<div class="text">👍 Вгадані літери: </div>', unsafe_allow_html=True)
-        st.session_state.not_guessed_placeholder.markdown(f'<div class="text">👎 Невгадані літери: </div>', unsafe_allow_html=True)
+
+
+        st.session_state.gesture_placeholder.markdown(
+            f'<div class="text">✋ Жест: {st.session_state.get("recognized_letter", [])}</div>', unsafe_allow_html=True)
+        st.session_state.word_placeholder.markdown(
+            f'<div class="text">Слово: {st.session_state["display_word"]}</div>', unsafe_allow_html=True)
+        st.session_state.guessed_placeholder.markdown(
+            f'<div class="text">👍 Вгадані літери: </div>', unsafe_allow_html=True)
+        st.session_state.not_guessed_placeholder.markdown(
+            f'<div class="text">👎 Невгадані літери: </div>', unsafe_allow_html=True)
 
 
         recognition.video_capture()
 
 
-       
-        if st.session_state["game_won"]==True:
+        if st.session_state["game_won"]:
             st.session_state.image_placeholder.markdown(
                 f'<div style="display: flex; justify-content: center;"><img src="" width="200"></div>',
-                 unsafe_allow_html=True
-                )
+                unsafe_allow_html=True
+            )
         else:
-             st.session_state.image_placeholder.markdown(
+            st.session_state.image_placeholder.markdown(
                 f'<div style="display: flex; justify-content: center;"><img src="" width="200"></div>',
                 unsafe_allow_html=True
-                )
+            )
 
