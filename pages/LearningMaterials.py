@@ -61,8 +61,8 @@ def app():
     st.markdown(f'<div class="text">{texts[lang]["links"]}</div>', unsafe_allow_html=True)
 
 
-    # Алфавіт
-    st.markdown('<div class="titi">Алфавіт</div>', unsafe_allow_html=True)
+    # Алфавіт жестів (Статичні букви)
+    st.markdown('<div class="titi">Алфавіт жестів (Статичні букви)</div>', unsafe_allow_html=True)
     
     
     # Створюємо 3 колонки
