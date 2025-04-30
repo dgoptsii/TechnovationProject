@@ -1,5 +1,8 @@
 import streamlit as st
 import utils
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 def app():
     utils.load_css("style.css")  # Завантаження стилів
@@ -32,14 +35,19 @@ def app():
         unsafe_allow_html=True
     )
 
-    # ЛОГОТИП ЧЕРЕЗ ЗОВНІШНЄ ПОСИЛАННЯ (щоб точно працювало без помилок)
-    st.markdown(
-        """
-        <div style="display: flex; justify-content: center; align-items: center; margin-top: 30px;">
-            <img src="https://i.postimg.cc/44VpG0zP/IT-GIRLS.png" width="250">
+    # Path to your SVG file
+    svg_path = "images/1.svg"
+
+    # Check if the file exists and display the image centered
+    if os.path.exists(svg_path):
+        st.markdown(
+        f"""
+        <div style="display: flex; justify-content: center;">
+            <img src="{svg_path}" width="300">
         </div>
         """,
-        unsafe_allow_html=True)
+        unsafe_allow_html=True
+        )
 
     # Тексти на двох мовах
     texts = {
