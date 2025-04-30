@@ -25,17 +25,6 @@ def app():
             st.session_state.language = 'en'
 
     # Стилі для красивих кнопок
-    st.markdown(
-        """
-        <style>
-        div.stButton > button {
-            padding: 0.8em 3em;
-            font-size: 18px;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
 
     # Тексти правил на двох мовах
     texts = {
