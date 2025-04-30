@@ -62,8 +62,8 @@ def app():
                 "All gestures in the game are performed with the right hand.<br>",
                 "You can see the word as a series of spaces (“_”) representing each letter. This means that any letter you haven't guessed yet will remain in the word as an underscore (_).<br>",
                 "To have your answer counted, hold your hand in the same position for 5 seconds.<br>",
-                "Letters like: Ґ, Д, З, Ї, Й, К, Ц, Щ, Ь are missing because they are not static.<br>",
                 "After guessing a word, the screen displays the guessed word and a message congratulating the winner.<br>",
+                "Letters like: Ґ, Д, З, Ї, Й, К, Ц, Щ, Ь are missing because they are not static.<br>",
                 "For each wrong answer, the flower loses a petal. If the flower loses all petals, the game is over.<br>",
                 "The game is only available in Ukrainian."
             ]
