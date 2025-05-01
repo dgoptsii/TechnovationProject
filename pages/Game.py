@@ -12,7 +12,7 @@ from model.keypoint_classifier import recognition
 
 
 def change_level(level):
-    st.session_state.clear()  # Скидає весь session_state
+    st.session_state.clear()  
     st.session_state["level"] = level
     if level != "menu":
         reset_game()
@@ -20,9 +20,9 @@ def change_level(level):
 
 def reset_game():
     levels = {
-        "easy": (["СОН", "ШУМ", "МАК", "РІК", "НІС", "ШИЯ", "ІКРА","КОШКА", "КОМА" "МОШКА", "СМАК", "КАМІН", "РАКУРС", "РАК", "МІШОК", "СУМ"], 3),
-        "medium": (["РАНОК", "БУРЯК", "РОМАН", "ФАРБА", "ШТОРА", "МОСТИ", "РОМАШКА", "ЛІТАК", "ШАРФ", "СУМКА", "ЯНТАР", "КАША", "ТОРБА", "МІШОК", "КАРТКА"], 5),
-        "hard": (["АВТОМОБІЛЬ", "ГУМАННІСТ", "АВТОРИТЕТ", "ФАРБУВАННЯ", "АВТОБУС", "ЧАРІВНИК", "БАРОМЕТР", "ФЛЕШКА", "СПАЛАХ", "ІНЖЕНЕР", "ЕЛЕКТРОН", "ПЕЧИВО"], 10)
+        "easy": (["ЛАМПА", "МЕТА", "СИЛА", "ЛИСТ", "ТЕПЛО", "ПАН", "СЕЛО","МАТИ", "ТЕМА" "СПИНА", "ПОЛЕ", "САЛО", "ЛОТО", "ТОН", "СТАН", "СМОЛА","ЛИПА", "СИН", "НАСИП", "ЛОТОС"], 10),
+        "medium": (["МІСТО", "ІСПИТ", "РОБОТА", "МОТИВ", "НЕБО", "МІСТ", "ВИСОТА", "СУМА", "ПЕРО", "ЧОРНИЛА", "ТІСТО", "СТІЛ", "ЛІТОПИС", "ВІТЕР", "ТУМАН", "ВЕЧІР", "ПОБУТ", "БОЛОТО", "ЛІТР", "СТОВП", "БЕТОН"], 10),
+        "hard": (["УСПІХ", "ЖИТТЯ", "ГУМОР", "ШИЯ", "ЮРИСТ", "ЧЕМПІОН", "СИМВОЛ", "ФАХ", "СПАЛАХ", "ІНЖЕНЕР", "ЛЮБОВ", "ПЕЧИВО", "ЛИСТЯ", "ФІЛОЛОГІЯ", "ФОРМА", "ГОРА", "ХВІСТ", "ФАНЕРА", "ШТАНИ", "СТРУМ" ], 10)
     }
 
     words, tries = levels[st.session_state["level"]]
@@ -53,7 +53,7 @@ def set_placeholders():
 def app():
     utils.load_css("style.css")
 
-    # Застосовуємо білий фон тільки для цієї сторінки
+    
     st.markdown("""
         <style>
         .stApp {
@@ -84,26 +84,40 @@ def app():
 
         image_sets = {
             "easy": [
-                "images/1.svg","images/1.svg","images/1.svg"
+                "images/hard_9.svg",
+                "images/hard_8.svg",
+                "images/hard_7.svg",
+                "images/hard_6.svg",
+                "images/hard_5.svg",
+                "images/hard_4.svg",
+                "images/hard_3.svg",
+                "images/hard_2.svg",
+                "images/hard_1.svg",
+                "images/hard_0.svg"
             ],
             "medium": [
-                "https://i.postimg.cc/cJ6PZYYY/5-5.png",
-                "https://i.postimg.cc/HWbRpTJS/5-4.png",
-                "https://i.postimg.cc/q7tDWrVx/5-3.png",
-                "https://i.postimg.cc/DZLjyczW/5-2.png",
-                "https://i.postimg.cc/hvnCJ7J2/5-1.png"
+               "images/hard_9.svg",
+                "images/hard_8.svg",
+                "images/hard_7.svg",
+                "images/hard_6.svg",
+                "images/hard_5.svg",
+                "images/hard_4.svg",
+                "images/hard_3.svg",
+                "images/hard_2.svg",
+                "images/hard_1.svg",
+                "images/hard_0.svg"
             ],
             "hard": [
-                "https://i.postimg.cc/m28dDkTS/10-10.png",
-                "https://i.postimg.cc/g2jg6pJb/10-9.png",
-                "https://i.postimg.cc/Cx2mG2BB/10-8.png",
-                "https://i.postimg.cc/xdbgtPMs/10-7.png",
-                "https://i.postimg.cc/441PLyHT/10-6.png",
-                "https://i.postimg.cc/CxR4x4PF/10-5.png",
-                "https://i.postimg.cc/t48NZVwF/10-4.png",
-                "https://i.postimg.cc/yx6m4h3C/10-3.png",
-                "https://i.postimg.cc/66zVVPFW/10-2.png",
-                "https://i.postimg.cc/VLVjpCY2/10-1.png"
+                "images/hard_9.svg",
+                "images/hard_8.svg",
+                "images/hard_7.svg",
+                "images/hard_6.svg",
+                "images/hard_5.svg",
+                "images/hard_4.svg",
+                "images/hard_3.svg",
+                "images/hard_2.svg",
+                "images/hard_1.svg",
+                "images/hard_0.svg"
             ]
         }
 
@@ -152,14 +166,14 @@ def app():
 
         recognition.video_capture()
         images_win = [
-                "images/1.svg","images/1.svg","images/1.svg"
+                "images/hardwinn.svg"
             ]
         
         if st.session_state["game_won"]:
             svg_path = images_win[level_index]
             st.session_state.image_placeholder.image(svg_path, width=300)
         else:
-            svg_path = "images/1.svg"
+            svg_path = "images/lose.svg"
             st.session_state.image_placeholder.image(svg_path, width=300)
         
           

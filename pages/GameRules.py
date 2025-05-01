@@ -5,15 +5,12 @@ import utils
 def app():
     utils.load_css("style.css")
 
-    # Сесійний стан для мови
     if 'language' not in st.session_state:
         st.session_state.language = 'uk'
 
-    # Сесійний стан для мови
     if 'language' not in st.session_state:
         st.session_state.language = 'uk'
 
-    # Кнопки вибору мови по центру
     st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
 
     col_empty, col1, col2, col_empty2 = st.columns([2, 1, 1, 2])
@@ -24,9 +21,7 @@ def app():
         if st.button("English", use_container_width=True, key="en_btn_about_final"):
             st.session_state.language = 'en'
 
-    # Стилі для красивих кнопок
 
-    # Тексти правил на двох мовах
     texts = {
         'uk': {
             'title': "Правила гри",
@@ -61,16 +56,13 @@ def app():
 
     lang = st.session_state.language
 
-    # Заголовок
     st.markdown(f'<div class="title_header">{texts[lang]["title"]}</div>', unsafe_allow_html=True)
 
-    # Показ правил гри
     for idx, rule in enumerate(texts[lang]['rules']):
         st.markdown(f'<div class="text">{rule}</div>', unsafe_allow_html=True)
 
-        # Перше зображення — по центру
         if idx == 0:
-            col1, col2, col3 = st.columns([1, 2, 1])  # Перша колонка — порожня, друга — для зображення
+            col1, col2, col3 = st.columns([1, 2, 1])
             with col1:
                 pass
             with col2:
@@ -82,14 +74,12 @@ def app():
             with col3:
                 pass
 
-# Друге і третє зображення — горизонтально, по центру
         if idx == 3:
-            col1, col2, col3 = st.columns([1, 2, 1])  # Перша і третя колонка — порожні, друга — для зображень
+            col1, col2, col3 = st.columns([1, 2, 1])  
             with col1:
                 pass
             with col2:
-                # Два зображення в одній колонці, горизонтально один від одного
-                col_left, col_right = st.columns([1, 1])  # Створюємо дві рівні колонки для зображень
+                col_left, col_right = st.columns([1, 1]) 
                 with col_left:
                     svg_path = "images/3.svg"
                     if os.path.exists(svg_path):
@@ -105,9 +95,8 @@ def app():
             with col3:
                 pass
 
-        # Четверте, п'яте і шосте зображення — в три колонки поруч
         if idx == 4:
-            col1, col2, col3 = st.columns([1, 1, 1])  # Три рівні колонки для зображень
+            col1, col2, col3 = st.columns([1, 1, 1]) 
             with col1:
                 svg_path = "images/2.svg"
                 if os.path.exists(svg_path):

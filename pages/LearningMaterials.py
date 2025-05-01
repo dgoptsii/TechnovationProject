@@ -4,11 +4,9 @@ import utils
 def app():
     utils.load_css("style.css")
 
-    # Сесійний стан для мови
     if 'language' not in st.session_state:
         st.session_state.language = 'uk'
 
-    # Кнопки вибору мови по центру
     st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
 
     col_empty, col1, col2, col_empty2 = st.columns([2, 1, 1, 2])
@@ -19,10 +17,8 @@ def app():
         if st.button("English", use_container_width=True, key="en_btn_learning"):
             st.session_state.language = 'en'
 
-    # Стилі для довших кнопок
     
 
-    # Тексти навчальних матеріалів
     texts = {
         'uk': {
             'title': "Навчальні матеріали",
@@ -54,17 +50,15 @@ def app():
 
     lang = st.session_state.language
 
-    # Заголовок
     st.markdown(f'<div class="title_header">{texts[lang]["title"]}</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="title_subheader">{texts[lang]["subtitle1"]}</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="text">{texts[lang]["links"]}</div>', unsafe_allow_html=True)
 
     
     st.markdown(f'<div class="title_subheader">{texts[lang]["subtitle2"]}</div>', unsafe_allow_html=True)
-    # Створюємо 3 колонки
+
     col1, col2, = st.columns(2)
     
-     # Видео для першого столбца
     with col1:
      
      st.video("https://www.youtube.com/watch?v=Y3yPvsOLc5k")
@@ -77,7 +71,6 @@ def app():
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">М</p>', unsafe_allow_html=True)
      
 
-     # Видео для другого столбца
     with col2:
      
      st.video("https://www.youtube.com/watch?v=A4kQCBdG5HA")
@@ -88,10 +81,9 @@ def app():
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">І</p>', unsafe_allow_html=True)
      
     st.markdown(f'<div class="title_subheader">{texts[lang]["subtitle3"]}</div>', unsafe_allow_html=True)
-    # Створюємо 3 колонки
+
     col1, col2, = st.columns(2)
     
-     # Видео для першого столбца
     with col1:
      
      st.video("https://www.youtube.com/watch?v=Y3yPvsOLc5k")
@@ -104,7 +96,6 @@ def app():
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">М</p>', unsafe_allow_html=True)
      
 
-     # Видео для другого столбца
     with col2:
      
      st.video("https://www.youtube.com/watch?v=A4kQCBdG5HA")
@@ -115,10 +106,9 @@ def app():
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">І</p>', unsafe_allow_html=True)
      
     st.markdown(f'<div class="title_subheader">{texts[lang]["subtitle4"]}</div>', unsafe_allow_html=True)
-    # Створюємо 3 колонки
+
     col1, col2, = st.columns(2)
     
-     # Видео для першого столбца
     with col1:
      
      st.video("https://www.youtube.com/watch?v=Y3yPvsOLc5k")
@@ -131,7 +121,7 @@ def app():
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">М</p>', unsafe_allow_html=True)
      
 
-     # Видео для другого столбца
+    
     with col2:
      
      st.video("https://www.youtube.com/watch?v=A4kQCBdG5HA")
