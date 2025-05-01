@@ -34,7 +34,9 @@ import mediapipe as mp
 
 from model.keypoint_classifier.keypoint_classifier import KeyPointClassifier
 
-
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
 
@@ -128,8 +130,9 @@ def process_letter():
             # Оновлення зображення за кількістю помилок
             images = st.session_state["images"]
             img_index = max(0, min(len(images) - 1, len(images) - st.session_state["count"]))
-            st.session_state.image_placeholder.markdown(f'<div><img src="{images[img_index]}" hight="300"></div>', unsafe_allow_html=True)
-
+            #st.session_state.image_placeholder.markdown(f'<div><img src="{images[img_index]}" hight="300"></div>', unsafe_allow_html=True)
+            svg_path = images[img_index]
+            st.session_state.image_placeholder.image(svg_path, width=300)
 
 
 
@@ -322,7 +325,7 @@ def video_capture():
 
                 debug_image = draw_bounding_rect(use_brect, debug_image, brect)
                 debug_image = draw_landmarks(debug_image, landmark_list)
-                debug_image = draw_info_text(debug_image, brect, handedness, ukrainian_letter, remaining_seconds)
+                debug_image = draw_info_text(debug_image, brect, handedness, label, remaining_seconds)
 
 
                 letter = ukrainian_letter.upper()

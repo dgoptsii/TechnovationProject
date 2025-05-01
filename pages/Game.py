@@ -3,16 +3,10 @@ import random
 import utils
 
 
-
-
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from model.keypoint_classifier import recognition
-
-
-
-
 
 
 
@@ -24,33 +18,13 @@ def change_level(level):
         reset_game()
 
 
-
-
-   
-
-
-
-
 def reset_game():
     levels = {
-    "easy": {
-        "allowed_letters": {"С", "О", "Н", "Ш", "У", "М", "А", "К", "І", "Р"},  # 10 літер для 1-го рівня
-        "words": ["СОН", "ШУМ", "МАК", "РІК", "НІС", "ШИЯ", "ІКРА","КОШКА", "КОМА" "МОШКА", "СМАК", "КАМІН", "РАКУРС", "РАК", "МІШОК", "СУМ"]
-    },
-    "medium": {
-        "allowed_letters": {"Р", "А", "Н", "О", "", "Б", "У", "Я", "М", "Т", "І", "Ш", "Ф", "С", "Л"},  # 15 літер для 2-го рівня
-        "words": ["РАНОК", "БУРЯК", "РОМАН", "ФАРБА", "ШТОРА", "МОСТИ", "РОМАШКА", "ЛІТАК", "ШАРФ", "СУМКА", "ЯНТАР", "КАША", "ТОРБА", "МІШОК", "КАРТКА" ]
-    },
-    "hard": {
-        "allowed_letters": {"А", "В", "Т", "О", "М", "Б", "І", "Л", "Х", "Г", "Н", "Ф", "Ш", "Р", "С", "У", "Я", "Ю", "Ч", "Е", "Ж", "П", "И"},  # 20 літер для 3-го рівня
-        "words": ["АВТОМОБІЛЬ", "ГУМАННІСТ", "АВТОРИТЕТ", "ФАРБУВАННЯ", "АВТОБУС", "ЧАРІВНИК", "БАРОМЕТР", "ФЛЕШКА", "СПАЛАХ", "ІНЖЕНЕР", "ЕЛЕКТРОН", "ПЕЧИВО",]
-    }
-        levels = {
         "easy": (["СОН", "ШУМ", "МАК", "РІК", "НІС", "ШИЯ", "ІКРА","КОШКА", "КОМА" "МОШКА", "СМАК", "КАМІН", "РАКУРС", "РАК", "МІШОК", "СУМ"], 3),
-        "medium": (["ПРАВО", "ВІРНА", "РІВНО"], 5),
-        "hard": (["ПЛАНУВАННЯ", "ПРИВІТАННЯ", "УПРАВЛІННЯ"], 10)
+        "medium": (["РАНОК", "БУРЯК", "РОМАН", "ФАРБА", "ШТОРА", "МОСТИ", "РОМАШКА", "ЛІТАК", "ШАРФ", "СУМКА", "ЯНТАР", "КАША", "ТОРБА", "МІШОК", "КАРТКА"], 5),
+        "hard": (["АВТОМОБІЛЬ", "ГУМАННІСТ", "АВТОРИТЕТ", "ФАРБУВАННЯ", "АВТОБУС", "ЧАРІВНИК", "БАРОМЕТР", "ФЛЕШКА", "СПАЛАХ", "ІНЖЕНЕР", "ЕЛЕКТРОН", "ПЕЧИВО"], 10)
     }
-    }
+
     words, tries = levels[st.session_state["level"]]
     st.session_state["random_word"] = random.choice(words)
     st.session_state["count"] = tries
@@ -59,8 +33,6 @@ def reset_game():
     st.session_state["recognized_letter"] = ""
     st.session_state["game_won"] = False
     st.session_state["display_word"] = " ".join(["_" for _ in st.session_state["random_word"]])
-
-
 
 
 def set_placeholders():
@@ -78,11 +50,8 @@ def set_placeholders():
        
 
 
-
-
 def app():
     utils.load_css("style.css")
-
 
     # Застосовуємо білий фон тільки для цієї сторінки
     st.markdown("""
@@ -93,10 +62,8 @@ def app():
         </style>
     """, unsafe_allow_html=True)
 
-
     if "level" not in st.session_state:
         st.session_state.level = "menu"
-
 
     if st.session_state.level == "menu":
         st.markdown('<div class="title_header">Гра</div>', unsafe_allow_html=True)
@@ -109,19 +76,15 @@ def app():
         st.session_state.medium = st.empty()
         st.session_state.hard = st.empty()
 
-
         level_titles = {
-            "easy": "Легкий рівень",
-            "medium": "Середній рівень",
-            "hard": "Складний рівень"
+            "easy": ("Легкий рівень",0),
+            "medium": ("Середній рівень",1),
+            "hard": ("Складний рівень",2)
         }
-
 
         image_sets = {
             "easy": [
-                "https://i.postimg.cc/MpbcWJW1/3-3.png",
-                "https://i.postimg.cc/05Jx7gzm/3-2.png",
-                "https://i.postimg.cc/bvJfJ4XZ/3-1.png"
+                "images/1.svg","images/1.svg","images/1.svg"
             ],
             "medium": [
                 "https://i.postimg.cc/cJ6PZYYY/5-5.png",
@@ -144,27 +107,23 @@ def app():
             ]
         }
 
-
         level = st.session_state.level
-        level_name = level_titles[level]
+        level_name, level_index = level_titles[level]
+       
+        
         images = image_sets[level]
 
-
         st.markdown(f'<div class="title_subheader">{level_name}</div>', unsafe_allow_html=True)
-
 
         if "random_word" not in st.session_state:
             reset_game()
 
-
         word = st.session_state["random_word"]
         count = st.session_state["count"]
-
 
         if "images" not in st.session_state:
             st.session_state.images = images
         col1, col2 = st.columns(2)
-
 
         with col1:
             if "image_placeholder" not in st.session_state:
@@ -173,21 +132,14 @@ def app():
             if "video_placeholder" not in st.session_state:
                 st.session_state.video_placeholder = st.empty()
 
-
         img_index = max(0, min(len(images) - 1, len(images) - count))
-
-
-        st.session_state.image_placeholder.markdown(
-            f'<div><img src="{images[img_index]}" height="300"></div>',
-            unsafe_allow_html=True
-        )
-
+        svg_path = images[img_index]
+        st.session_state.image_placeholder.image(svg_path, width=300)
+                 
 
         set_placeholders()
 
-
         st.button("Назад", on_click=lambda: change_level("menu"), key="back_1button", use_container_width=True)
-
 
         st.session_state.gesture_placeholder.markdown(
             f'<div class="text">✋ Жест: {st.session_state.get("recognized_letter", [])}</div>', unsafe_allow_html=True)
@@ -198,18 +150,16 @@ def app():
         st.session_state.not_guessed_placeholder.markdown(
             f'<div class="text">👎 Невгадані літери: </div>', unsafe_allow_html=True)
 
-
         recognition.video_capture()
-
-
+        images_win = [
+                "images/1.svg","images/1.svg","images/1.svg"
+            ]
+        
         if st.session_state["game_won"]:
-            st.session_state.image_placeholder.markdown(
-                f'<div style="display: flex; justify-content: center;"><img src="" width="200"></div>',
-                unsafe_allow_html=True
-            )
+            svg_path = images_win[level_index]
+            st.session_state.image_placeholder.image(svg_path, width=300)
         else:
-            st.session_state.image_placeholder.markdown(
-                f'<div style="display: flex; justify-content: center;"><img src="" width="200"></div>',
-                unsafe_allow_html=True
-            )
-
+            svg_path = "images/1.svg"
+            st.session_state.image_placeholder.image(svg_path, width=300)
+        
+          

@@ -105,7 +105,10 @@
     border-color: #588F7C;
 }
 
-
+div.stButton > button {
+    padding: 0.8em 3em;
+    font-size: 18px;
+}
 
 
 
