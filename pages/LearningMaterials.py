@@ -63,23 +63,29 @@ def app():
      
      st.video("https://www.youtube.com/watch?v=Y3yPvsOLc5k")
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">А</p>', unsafe_allow_html=True)
-     st.video("https://www.youtube.com/watch?v=X2ymxV1SB_M")
-     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Г</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=B78Ou5oPtdo")
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">И</p>', unsafe_allow_html=True)
-     st.video("https://www.youtube.com/watch?v=9ivfqYlRQw4")
-     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">М</p>', unsafe_allow_html=True)
-     
+     st.video("https://www.youtube.com/watch?v=B78Ou5oPtdo")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Н</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=LJjonvptVAo")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">С</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=nJfXbqjyaB4")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Л</p>', unsafe_allow_html=True)
 
+     # Видео для другого столбца
     with col2:
      
-     st.video("https://www.youtube.com/watch?v=A4kQCBdG5HA")
-     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Б</p>', unsafe_allow_html=True) 
-     st.video("https://www.youtube.com/watch?v=8j7KZnsBfhY") 
-     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Е</p>', unsafe_allow_html=True)   
-     st.video("https://www.youtube.com/watch?v=uCRSEbYOys4")
-     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">І</p>', unsafe_allow_html=True)
-     
+     st.video("https://www.youtube.com/watch?v=8j7KZnsBfhY")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Е</p>', unsafe_allow_html=True) 
+     st.video("https://www.youtube.com/watch?v=02Cb_huQRmw") 
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">О</p>', unsafe_allow_html=True)   
+     st.video("https://www.youtube.com/watch?v=m2pcbkZKQCU")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">П</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=WeBxscv_iFE")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Т</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=9ivfqYlRQw4")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">М</p>', unsafe_allow_html=True)
+
     st.markdown(f'<div class="title_subheader">{texts[lang]["subtitle3"]}</div>', unsafe_allow_html=True)
 
     col1, col2, = st.columns(2)
@@ -88,14 +94,21 @@ def app():
      
      st.video("https://www.youtube.com/watch?v=Y3yPvsOLc5k")
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">А</p>', unsafe_allow_html=True)
-     st.video("https://www.youtube.com/watch?v=X2ymxV1SB_M")
-     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Г</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=q_6cni-XkUY")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">В</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=B78Ou5oPtdo")
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">И</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=B78Ou5oPtdo")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Н</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=9ivfqYlRQw4")
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">М</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=m2pcbkZKQCU")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">П</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=WeBxscv_iFE")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Т</p>', unsafe_allow_html=True)
      
-
+     
+     # Видео для другого столбца
     with col2:
      
      st.video("https://www.youtube.com/watch?v=A4kQCBdG5HA")
@@ -104,7 +117,15 @@ def app():
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Е</p>', unsafe_allow_html=True)   
      st.video("https://www.youtube.com/watch?v=uCRSEbYOys4")
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">І</p>', unsafe_allow_html=True)
-     
+     st.video("https://www.youtube.com/watch?v=nJfXbqjyaB4")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Л</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=02Cb_huQRmw") 
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">О</p>', unsafe_allow_html=True) 
+     st.video("https://www.youtube.com/watch?v=LJjonvptVAo")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">С</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=LfGdX20yQ_g")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">У</p>', unsafe_allow_html=True)
+
     st.markdown(f'<div class="title_subheader">{texts[lang]["subtitle4"]}</div>', unsafe_allow_html=True)
 
     col1, col2, = st.columns(2)
@@ -113,22 +134,49 @@ def app():
      
      st.video("https://www.youtube.com/watch?v=Y3yPvsOLc5k")
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">А</p>', unsafe_allow_html=True)
-     st.video("https://www.youtube.com/watch?v=X2ymxV1SB_M")
-     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Г</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=q_6cni-XkUY")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">В</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=8j7KZnsBfhY") 
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Е</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=B78Ou5oPtdo")
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">И</p>', unsafe_allow_html=True)
-     st.video("https://www.youtube.com/watch?v=9ivfqYlRQw4")
-     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">М</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=nJfXbqjyaB4")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Л</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=02Cb_huQRmw") 
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">О</p>', unsafe_allow_html=True) 
+     st.video("https://www.youtube.com/watch?v=2Xzzg2Qk_zA")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Р</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=WeBxscv_iFE")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Т</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=b41xE7IH5DM")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Ф</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=o-UzR-smI90")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Ч</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=s5pHhi0l_ZY")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Ю</p>', unsafe_allow_html=True)
      
-
-    
+     # Видео для другого столбца
     with col2:
      
      st.video("https://www.youtube.com/watch?v=A4kQCBdG5HA")
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Б</p>', unsafe_allow_html=True) 
-     st.video("https://www.youtube.com/watch?v=8j7KZnsBfhY") 
-     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Е</p>', unsafe_allow_html=True)   
+     st.video("https://www.youtube.com/watch?v=X2ymxV1SB_M") 
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Г</p>', unsafe_allow_html=True)   
+     st.video("https://www.youtube.com/watch?v=teAEIt6anLE")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Ж</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=uCRSEbYOys4")
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">І</p>', unsafe_allow_html=True)
-     
-     
+     st.video("https://www.youtube.com/watch?v=9ivfqYlRQw4")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">М</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=m2pcbkZKQCU")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">П</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=LJjonvptVAo")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">С</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=LfGdX20yQ_g")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">У</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=S1Mz4FtK3y0")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Х</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=uqcAzaxvmQg")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Ш</p>', unsafe_allow_html=True)
+     st.video("https://www.youtube.com/watch?v=Ziqz_58nOVo")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Я</p>', unsafe_allow_html=True)
