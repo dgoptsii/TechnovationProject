@@ -24,18 +24,7 @@ def app():
             st.session_state.language = 'en'
 
     # Стилі для красивих кнопок
-    st.markdown(
-        """
-        <style>
-        div.stButton > button {
-            padding: 0.8em 3em;
-            font-size: 18px;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-   
+    
     col1, col2, col3 = st.columns([1, 2, 1])  # Перша колонка — порожня, друга — для зображення
     with col1:
                 pass
