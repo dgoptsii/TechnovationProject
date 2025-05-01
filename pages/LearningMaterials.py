@@ -106,7 +106,8 @@ def app():
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">П</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=WeBxscv_iFE")
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Т</p>', unsafe_allow_html=True)
-     
+     st.video("https://www.youtube.com/watch?v=2Xzzg2Qk_zA")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Р</p>', unsafe_allow_html=True)
      
      # Видео для другого столбца
     with col2:
@@ -125,6 +126,7 @@ def app():
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">С</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=LfGdX20yQ_g")
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">У</p>', unsafe_allow_html=True)
+     
 
     st.markdown(f'<div class="title_subheader">{texts[lang]["subtitle4"]}</div>', unsafe_allow_html=True)
 
@@ -154,7 +156,9 @@ def app():
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Ч</p>', unsafe_allow_html=True)
      st.video("https://www.youtube.com/watch?v=s5pHhi0l_ZY")
      st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Ю</p>', unsafe_allow_html=True)
-     
+     st.video("https://www.youtube.com/watch?v=B78Ou5oPtdo")
+     st.markdown('<p style="text-align: center; color: #276B5A; font-weight: bold;">Н</p>', unsafe_allow_html=True)
+
      # Видео для другого столбца
     with col2:
      
