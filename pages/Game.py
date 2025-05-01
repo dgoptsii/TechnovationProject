@@ -54,13 +54,6 @@ def app():
     utils.load_css("style.css")
 
     
-    st.markdown("""
-        <style>
-        .stApp {
-            background-color: white !important;
-        }
-        </style>
-    """, unsafe_allow_html=True)
 
     if "level" not in st.session_state:
         st.session_state.level = "menu"
@@ -82,32 +75,7 @@ def app():
             "hard": ("Складний рівень",2)
         }
 
-        image_sets = {
-            "easy": [
-                "images/hard_9.svg",
-                "images/hard_8.svg",
-                "images/hard_7.svg",
-                "images/hard_6.svg",
-                "images/hard_5.svg",
-                "images/hard_4.svg",
-                "images/hard_3.svg",
-                "images/hard_2.svg",
-                "images/hard_1.svg",
-                "images/hard_0.svg"
-            ],
-            "medium": [
-               "images/hard_9.svg",
-                "images/hard_8.svg",
-                "images/hard_7.svg",
-                "images/hard_6.svg",
-                "images/hard_5.svg",
-                "images/hard_4.svg",
-                "images/hard_3.svg",
-                "images/hard_2.svg",
-                "images/hard_1.svg",
-                "images/hard_0.svg"
-            ],
-            "hard": [
+        images = [
                 "images/hard_9.svg",
                 "images/hard_8.svg",
                 "images/hard_7.svg",
@@ -119,13 +87,11 @@ def app():
                 "images/hard_1.svg",
                 "images/hard_0.svg"
             ]
-        }
 
         level = st.session_state.level
         level_name, level_index = level_titles[level]
        
-        
-        images = image_sets[level]
+    
 
         st.markdown(f'<div class="title_subheader">{level_name}</div>', unsafe_allow_html=True)
 
@@ -148,8 +114,11 @@ def app():
 
         img_index = max(0, min(len(images) - 1, len(images) - count))
         svg_path = images[img_index]
-        st.session_state.image_placeholder.image(svg_path, width=300)
-                 
+        st.session_state.image_placeholder.image(svg_path, width=250)
+
+
+        st.session_state["width"] = 250
+        
 
         set_placeholders()
 
@@ -171,9 +140,9 @@ def app():
         
         if st.session_state["game_won"]:
             svg_path = images_win[level_index]
-            st.session_state.image_placeholder.image(svg_path, width=300)
+            st.session_state.image_placeholder.image(svg_path, width=250)
         else:
             svg_path = "images/lose.svg"
-            st.session_state.image_placeholder.image(svg_path, width=300)
+            st.session_state.image_placeholder.image(svg_path, width=250)
         
           

@@ -130,9 +130,8 @@ def process_letter():
             # Оновлення зображення за кількістю помилок
             images = st.session_state["images"]
             img_index = max(0, min(len(images) - 1, len(images) - st.session_state["count"]))
-            #st.session_state.image_placeholder.markdown(f'<div><img src="{images[img_index]}" hight="300"></div>', unsafe_allow_html=True)
             svg_path = images[img_index]
-            st.session_state.image_placeholder.image(svg_path, width=300)
+            st.session_state.image_placeholder.image(svg_path, width=250)
 
 
 

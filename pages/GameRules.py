@@ -26,7 +26,7 @@ def app():
         'uk': {
             'title': "Правила гри",
             'rules': [
-                "Спочатку обирається рівень складності. Гра побудована на жестах алфавіту української мови: літери демонструються по черзі з паузами.<br>",
+                "Спочатку обирається рівень складності. Гра побудована на жестах алфавіту української мови: літери демонструються по черзі з паузами. На кожному рівні Ви маєте 10 спроб, щоб відгадати слово. <br>",
                 "На кожному рівні з’являється вікно з камерою, в якому ви виконуватимете жести, а система розпізнаватиме їх за допомогою скелетної моделі руки.<br>",
                 "Всі жести в грі виконуються правою рукою.<br>",
                 "Ви можете бачити слово як серію пропусків («_»), що позначають кожну літеру. Це означає, що кожна літера, яку ви ще не вгадали, залишиться у слові у вигляді підкреслення (_).<br>"
@@ -41,7 +41,7 @@ def app():
         'en': {
             'title': "Game Rules",
             'rules': [
-                "First, you choose the difficulty level. The game is based on the gestures of the Ukrainian alphabet: letters are shown in turn with pauses.<br>",
+                "First, you choose the difficulty level. The game is based on the gestures of the Ukrainian alphabet: letters are shown in turn with pauses. At each level, you have 10 attempts to guess the word. <br>",
                 "At each level, a window with a camera appears in which you will perform gestures, and the system will recognize them using a skeletal model of the hand.<br>",
                 "All gestures in the game are performed with the right hand.<br>",
                 "You can see the word as a series of spaces (“_”) representing each letter. This means that any letter you haven't guessed yet will remain in the word as an underscore (_).<br>",
@@ -97,19 +97,7 @@ def app():
 
         if idx == 4:
             col1, col2, col3 = st.columns([1, 1, 1]) 
-            with col1:
-                svg_path = "images/2.svg"
-                if os.path.exists(svg_path):
-                    st.image(svg_path, width=200)
-                else:
-                    st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
             with col2:
-                svg_path = "images/4.svg"
-                if os.path.exists(svg_path):
-                    st.image(svg_path, width=200)
-                else:
-                    st.write(f"Не вдалося знайти файл за шляхом: {svg_path}. Поточна директорія: {os.getcwd()}")
-            with col3:
                 svg_path = "images/5.svg"
                 if os.path.exists(svg_path):
                     st.image(svg_path, width=200)
