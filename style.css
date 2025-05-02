@@ -111,6 +111,13 @@ div.stButton > button {
 }
 
 
+.title {
+    font-size: 36px;
+    color: #276B5A;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
 
 .retry-button button, .back-button button {
     background-color: #3DB387;
