@@ -54,18 +54,18 @@
 
 .text a {
     color: #ffffff;
-    text-decoration: none;
+    text-decoration: underline;
 }
 .text a:hover {
     text-decoration: underline;
 }
 
 /* Sidebar styling */
-.stSidebar {
+ .stSidebar { 
     background-color: #3DB387;
     color: #345753;
     font-family: 'Inter', sans-serif;
-}
+} 
 
 .stButton>button {
     background-color: #3DB387;
@@ -129,4 +129,3 @@ div.stButton > button {
     color: #EFE9D3;
     border-color: #588F7C;
 }
-

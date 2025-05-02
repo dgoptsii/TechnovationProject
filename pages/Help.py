@@ -4,11 +4,9 @@ import utils
 def app():
     utils.load_css("style.css")
 
-    # Сесійний стан для мови
     if 'language' not in st.session_state:
         st.session_state.language = 'uk'
 
-    # Кнопки вибору мови по центру
     st.markdown("<div style='margin-top: 10px;'></div>", unsafe_allow_html=True)
 
     col_empty, col1, col2, col_empty2 = st.columns([2, 1, 1, 2])
@@ -19,9 +17,7 @@ def app():
         if st.button("English", use_container_width=True, key="en_btn_help"):
             st.session_state.language = 'en'
 
-    # Стилі для довших кнопок
 
-    # Тексти для сторінки "Допомогти проекту"
     texts = {
         'uk': {
             'help_project': "Допомогти проєкту",
@@ -68,7 +64,6 @@ def app():
 
     lang = st.session_state.language
 
-    # Відображення вмісту
     st.markdown(f'<div class="title_header">{texts[lang]["help_project"]}</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="text">{texts[lang]["join_us"]}</div>', unsafe_allow_html=True)
 

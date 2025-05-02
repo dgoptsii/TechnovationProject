@@ -16,7 +16,6 @@ PAGES = {
     "Правила гри": GameRules,
     "Навчальні матеріали": LearningMaterials, 
     "Гра": Game, 
-    # сторінка "Допомогти проекту"
     "Допомогти проекту": Help, 
     "Громадські організації": PublicOrganizations
 }
