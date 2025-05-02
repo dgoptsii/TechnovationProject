@@ -98,7 +98,7 @@ def app():
         if idx == 4:
             col1, col2, col3 = st.columns([1, 1, 1]) 
             with col2:
-                svg_path = "images/5.svg"
+                svg_path = "images/hardwinn.svg"
                 if os.path.exists(svg_path):
                     st.image(svg_path, width=200)
                 else:

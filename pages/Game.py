@@ -76,16 +76,17 @@ def app():
         }
 
         images = [
-                "images/hard_9.svg",
-                "images/hard_8.svg",
-                "images/hard_7.svg",
-                "images/hard_6.svg",
-                "images/hard_5.svg",
-                "images/hard_4.svg",
-                "images/hard_3.svg",
-                "images/hard_2.svg",
-                "images/hard_1.svg",
-                "images/hard_0.svg"
+                "images/10.10 (1).svg",
+                "images/10.9 (1).svg",
+                "images/10.8 (1).svg",
+                "images/10.7 (1).svg",
+                "images/10.6 (1).svg",
+                "images/10.5 (1).svg",
+                "images/10.4 (1).svg",
+                "images/10.3 (1).svg",
+                "images/10.2 (1).svg",
+                "images/10.1 (1).svg",
+              
             ]
 
         level = st.session_state.level
