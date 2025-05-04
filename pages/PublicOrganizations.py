@@ -20,7 +20,7 @@ def app():
 
     texts = {
         'uk': {
-            'title': "Громадські організації",
+            'title': "Партнери/ГО",
             'utog_title': "УТОГ",
             'utog_text': ("Всеукраїнська громадська організація людей з вадами слуху була заснована у 1933 році, і є членом Всесвітньої федерації глухих. На сьогодні обласні і територіальні організації УТОГ об'єднують понад 50 тисяч громадян України з порушеннями слуху та мови."),
             'invasport_title': "ІНВАСПОРТ",
@@ -29,7 +29,7 @@ def app():
             'pog_text': ("Команда ПОГ «Центр соціального бізнесу» надає послуги перекладу жестової мови. Послуги надаються замовнику в будь-якому зручному форматі. Багатьох слів, особливо сучасних, не існує в жестовій мові. Тому слова, для яких відсутнє жестове позначення, просто неможливо перекласти без використання української дактильної абетки. Вони також проводять заходи по безбар’єрності.")
         },
         'en': {
-            'title': "Public Organizations",
+            'title': "Partners/NGOs",
             'utog_title': "UTOG",
             'utog_text': ("The All-Ukrainian Public Organization of People with Hearing Impairments was founded in 1933 and is a member of the World Federation of the Deaf. Today, the regional and territorial organizations of the UPO unite more than 50,000 Ukrainian citizens with hearing and speech impairments."),
             'invasport_title': "INVASPORT",
