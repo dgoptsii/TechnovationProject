@@ -140,7 +140,7 @@ def app():
             ]
         
         if st.session_state["game_won"]:
-            svg_path = images_win[level_index]
+            svg_path = images_win
             st.session_state.image_placeholder.image(svg_path, width=250)
         else:
             svg_path = "images/lose.svg"

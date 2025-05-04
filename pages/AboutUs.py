@@ -42,7 +42,7 @@ def app():
                 "Ми довго думали над темою нашого проєкту, проте врешті-решт зупинилися на інклюзії. "
                 "Нашою мрією стало допомагати дітям з вадами слуху вливатися в сучасне суспільство і не відчувати себе зайвими, "
                 "допомагати їм рухатися далі. "
-                "Із часом зародилася ідея створення доступної і сучасної гри, яка є інструментом для навчання жестової мови, "
+                "Із часом зародилася ідея створення доступної і сучасної гри, яка є інструментом для навчання жестового Українського алфавіту, "
                 "яка об'єднувала б людей з різних культур та середовищ."
             ),
             'mission': "Місія 🎯",
@@ -65,7 +65,7 @@ def app():
                 "We spent a lot of time choosing a topic for our project and eventually decided on inclusion. "
                 "Our dream is to help children with hearing impairments integrate into modern society and not feel isolated, "
                 "help them move forward. "
-                "Over time, the idea of creating an accessible and modern game emerged, which would serve as a tool for learning sign language, "
+                "Over time, the idea of ​​creating an accessible and modern game emerged, which is a tool for teaching the Ukrainian sign alphabet."
                 "bringing together people from different cultures and backgrounds."
             ),
             'mission': "Mission 🎯",
