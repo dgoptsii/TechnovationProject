@@ -8,21 +8,40 @@ import LearningMaterials
 import utils
 
 
-
-
-# Dictionary (key, value) у потрібному порядку
-PAGES = {
+# Словник для меню на українській мові
+PAGES_UK = {
     "Про проект": AboutUs,
     "Правила гри": GameRules,
     "Навчальні матеріали": LearningMaterials, 
     "Гра": Game, 
     "Допомогти проекту": Help, 
-    "Громадські організації": PublicOrganizations
+    "Партнери/ГО": PublicOrganizations
 }
 
-st.sidebar.title('Меню')
-selection = st.sidebar.radio("Перейти на", list(PAGES.keys())
-)
+# Словник для меню на англійській мові
+PAGES_EN = {
+    "About the Project": AboutUs,
+    "Game Rules": GameRules,
+    "Learning Materials": LearningMaterials, 
+    "Game": Game, 
+    "Support the Project": Help, 
+    "Partners/NGOs": PublicOrganizations
+}
+
+# Перемикач мови
+language = st.sidebar.radio("Виберіть мову / Choose language", ("Українська", "English"))
+
+# Вибір сторінки в залежності від мови
+if language == "Українська":
+    PAGES = PAGES_UK
+else:
+    PAGES = PAGES_EN
+
+# Меню
+st.sidebar.title('Меню/Menu')
+selection = st.sidebar.radio("Перейти на / Go to", list(PAGES.keys()))
+
+# Завантаження вибраної сторінки
 page = PAGES[selection]
 utils.load_css("style.css")
 page.app()

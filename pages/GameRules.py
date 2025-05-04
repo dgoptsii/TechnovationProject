@@ -33,7 +33,7 @@ def app():
                 "Для того щоб гра зарахувала вашу відповідь, тримайте руку в одному положенні 5 секунд.<br>"
                 "Якщо жест вже був показаний і розпізнаний, він буде позначений як «already captured».<br>",
                 "Відсутні такі букви як: Ґ Д Є З Ї Й К Ц Щ Ь , оскільки вони нестатичні.<br>",
-                "Після того як ви вгадали всі літери, слово відображається на екрані разом з повідомленням привітання переможця.<br>"
+                "Після того як ви вгадали всі літери, слово відображається на екране разом з повідомленням привітання переможця.<br>"
                 "За кожну неправильну відповідь квітка втрачає одну пелюстку. Якщо квітка залишилась без пелюсток, гра програна.<br>",
                 "Гра лише українською мовою."
             ]
@@ -46,7 +46,7 @@ def app():
                 "All gestures in the game are performed with the right hand.<br>",
                 "You can see the word as a series of spaces (“_”) representing each letter. This means that any letter you haven't guessed yet will remain in the word as an underscore (_).<br>",
                 "To have your answer counted, hold your hand in the same position for 5 seconds.<br>",
-                "After you have guessed all the letters, the word is displayed on the screen and a message congratulating the winner.<br>",
+                "After you have guessed all the letters, the word is displayed on the screen along with a message congratulating the winner.<br>",
                 "Letters like: Ґ, Д, З, Ї, Й, К, Ц, Щ, Ь are missing because they are not static.<br>",
                 "For each wrong answer, the flower loses a petal. If the flower loses all petals, the game is over.<br>",
                 "The game is only available in Ukrainian."
